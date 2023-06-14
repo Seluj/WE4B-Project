@@ -7,6 +7,14 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CarteComponent } from './carte/carte.component';
+import { BarRechercheComponent } from './bar-recherche/bar-recherche.component';
+import { PageRechercheComponent } from './page-recherche/page-recherche.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { GrilleCarteComponent } from './grille-carte/grille-carte.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { RestaurateurComponent } from './restaurateur/restaurateur.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +22,15 @@ import { AppRoutingModule } from './app-routing.module';
     NavBarComponent,
     AccueilComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    CarteComponent,
+    BarRechercheComponent,
+    PageRechercheComponent,
+    DashboardComponent,
+    RestaurantComponent,
+    GrilleCarteComponent,
+    UtilisateurComponent,
+    RestaurateurComponent
   ],
   imports: [
     BrowserModule,
