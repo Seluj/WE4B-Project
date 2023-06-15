@@ -6,6 +6,7 @@ import { InscriptionComponent } from "./inscription/inscription.component";
 import { RestaurantComponent } from "./restaurant/restaurant.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PageRechercheComponent } from "./page-recherche/page-recherche.component";
+import {Error404Component} from "./error404/error404.component";
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'inscription', component:InscriptionComponent },
   { path: 'restaurant', component:RestaurantComponent },
   { path: 'dashboard', component:DashboardComponent },
-  { path: 'recherche', component:PageRechercheComponent }
+  { path: 'recherche', component:PageRechercheComponent },
+  { path: '**', component: Error404Component }
 ];
 
 @NgModule({

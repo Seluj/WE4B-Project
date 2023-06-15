@@ -15,6 +15,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { GrilleCarteComponent } from './grille-carte/grille-carte.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { RestaurateurComponent } from './restaurateur/restaurateur.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RestaurateurComponent } from './restaurateur/restaurateur.component';
     RestaurantComponent,
     GrilleCarteComponent,
     UtilisateurComponent,
-    RestaurateurComponent
+    RestaurateurComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
