@@ -1,0 +1,30 @@
+button {
+  border: 0;
+  background-color: inherit;
+}
+
+.unlike {
+  color: rgb(188, 188, 0);
+}
+
+.carte {
+  display: inline-block;
+  width: 300px;
+  height: 330px;
+  margin: 0px 10px;
+  /* border: solid 1px blue; */
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 1rem 1rem 1rem -1rem #9e9e9e33;
+}
+.carte .carte-image {
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.carte .carte-info {
+  height: 130px;
+  /* border: solid 1px purple; */
+  padding: 0px 5px;
+}
