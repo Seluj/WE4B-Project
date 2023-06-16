@@ -16,6 +16,9 @@ import { GrilleCarteComponent } from './grille-carte/grille-carte.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { RestaurateurComponent } from './restaurateur/restaurateur.component';
 import { Error404Component } from './error404/error404.component';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule , ReactiveFormsModule} from "@angular/forms";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,15 @@ import { Error404Component } from './error404/error404.component';
     GrilleCarteComponent,
     UtilisateurComponent,
     RestaurateurComponent,
-    Error404Component
+    Error404Component,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
