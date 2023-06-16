@@ -1,2 +1,4 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar *ngIf=" (currentUrl !== '/connexion' && currentUrl !== '/inscription')"></app-nav-bar>
 <router-outlet></router-outlet>
+<app-footer *ngIf=" (currentUrl !== '/connexion' && currentUrl !== '/inscription')"></app-footer>
+
