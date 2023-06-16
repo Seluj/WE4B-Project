@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl, FormGroup,
-  ValidationErrors, ValidatorFn, Validators,
-  ReactiveFormsModule
-} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {CustomValidators} from "../custom-validators";
 
 @Component({
