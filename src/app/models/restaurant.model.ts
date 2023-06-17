@@ -6,14 +6,5 @@ export class Restaurant {
                 public prix: number,
                 public user_id: number,
                 public popularite: number
-                ) 
-                {
-                this.nom = nom;
-                this.adresse = adresse;
-                this.img = img;
-                this.description = description;
-                this.prix = prix;
-                this.user_id = user_id;
-                this.popularite = popularite;
-                }
+                ) {}
 }
