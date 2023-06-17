@@ -27,7 +27,7 @@ export class ConnexionComponent implements OnInit {
     pwd: new FormControl('', Validators.required)
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor() {
   }
 
   ngOnInit(): void {
