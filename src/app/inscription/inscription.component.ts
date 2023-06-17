@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import {CustomValidators} from "../custom-validators";
+import { CustomValidators } from "../custom-validators";
 
 @Component({
   selector: 'app-inscription',
@@ -19,22 +19,25 @@ export class InscriptionComponent implements OnInit {
       Validators.pattern(/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/)
     ]),
     pwd: new FormControl('', [
+      // Obligation de mettre un mot de passe
       Validators.required,
-
+      // Obligation de mettre 1 chiffre
       CustomValidators.patternValidator(/\d/, {hasNumber: true}),
-
+      // Obligation de mettre 1 lettre majuscule
       CustomValidators.patternValidator(/[A-Z]/, {hasCapitalCase: true}),
-
+      // Obligation de mettre 1 lettre minuscule
       CustomValidators.patternValidator(/[a-z]/, {hasSmallCase: true}),
-
+      // Obligation de mettre 1 caractère spécial
       CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, {hasSpecialCharacters: true}),
-
+      // Obligation de mettre au moins 8 caractères
       Validators.minLength(8),
-
+      // Doit correspondre au champ pwd2
       CustomValidators.matchValidator('pwd2', true)
     ]),
     pwd2: new FormControl('', [
+      // Obligation de mettre un mot de passe de confirmation
       Validators.required,
+      // Doit correspondre au champ pwd
       CustomValidators.matchValidator('pwd')
     ]),
     nom: new FormControl('', [
