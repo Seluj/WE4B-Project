@@ -23,7 +23,7 @@ export class RestaurantComponent implements OnInit {
     if (this.restaurantId === "1") {
       this.restaurant = new Restaurant( 1,"BOB", "5 rue du BOB", "../../assets/restaurant_belfort.jpg", "wow trop bien BOB", 0, 0, 0);
     } else if (this.restaurantId === "2") {
-      this.restaurant = new Restaurant("JIMBOB", "5 rue du JIMBOB", "../../assets/restaurant_berlin.jpg", "wow trop bien JIMBOB", 0, 0, 0);
+      this.restaurant = new Restaurant(2, "JIMBOB", "5 rue du JIMBOB", "../../assets/restaurant_berlin.jpg", "wow trop bien JIMBOB", 0, 0, 0);
     }
     this.liked = false;
     this.class = "like";
