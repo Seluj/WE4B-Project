@@ -10,7 +10,14 @@ import {CustomValidators} from "../custom-validators";
 export class InscriptionComponent implements OnInit {
 
   inscriptionForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [
+      Validators.required,
+
+      CustomValidators.patternValidator(/@/, {hasAt: true}),
+
+      // utilisation d'un modèle pour vérifier que l'email est valide au lieu de type="email"
+      Validators.pattern(/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/)
+    ]),
     pwd: new FormControl('', [
       Validators.required,
 
@@ -30,8 +37,17 @@ export class InscriptionComponent implements OnInit {
       Validators.required,
       CustomValidators.matchValidator('pwd')
     ]),
-    nom: new FormControl('', Validators.required),
-    prenom: new FormControl('', Validators.required)
+    nom: new FormControl('', [
+      Validators.required,
+      // Obligation de mettre un nom sans chiffre
+      Validators.pattern(/^[a-zA-ZÀ-ÿ--]*$/)
+    ]),
+    prenom: new FormControl('', [
+      Validators.required,
+      // Obligation de mettre un prénom sans chiffre
+      Validators.pattern(/^[a-zA-ZÀ-ÿ--]*$/)
+    ]),
+    restaurateur: new FormControl('')
   });
 
   constructor() {

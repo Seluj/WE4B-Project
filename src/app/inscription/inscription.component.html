@@ -14,6 +14,9 @@
         <div *ngIf="inscriptionForm.controls.nom?.errors?.['required']">
           Le nom est requis.
         </div>
+        <div *ngIf="inscriptionForm.controls.nom?.errors?.['pattern']">
+          Le nom ne doit contenir que des lettres.
+        </div>
       </div>
       <div class="input">
         <input type="text" class="input-field" formControlName="prenom" required/>
@@ -23,6 +26,9 @@
            *ngIf="inscriptionForm.controls.prenom?.invalid && (inscriptionForm.controls.prenom?.dirty || inscriptionForm.controls.prenom?.touched)">
         <div *ngIf="inscriptionForm.controls.prenom?.errors?.['required']">
           Le prénom est requis.
+        </div>
+        <div *ngIf="inscriptionForm.controls.prenom?.errors?.['pattern']">
+          Le prénom ne doit contenir que des lettres.
         </div>
       </div>
       <div class="input">
@@ -34,9 +40,14 @@
         <div *ngIf="inscriptionForm.controls.email?.errors?.['required']">
           L'email est requis.
         </div>
-        <div *ngIf="inscriptionForm.controls.email?.errors?.['email']">
-          L'email n'est pas valide.
+        <div *ngIf="inscriptionForm.controls.email?.hasError('hasAt'); else elseBlock">
+          L'email doit contenir un @.
         </div>
+        <ng-template #elseBlock>
+          <div *ngIf="inscriptionForm.controls.email?.errors?.['pattern']">
+            L'email n'est pas valide.
+          </div>
+        </ng-template>
       </div>
       <div class="input">
         <input type="password" class="input-field" formControlName="pwd" required/>
