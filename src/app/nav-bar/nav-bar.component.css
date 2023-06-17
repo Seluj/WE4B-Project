@@ -2,9 +2,21 @@
   background-color: #18534F;
 }
 
-
 img {
   margin-left: 10px;
   margin-right: 10px;
   height: 60px;
+}
+
+.connexion {
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.connexion:hover {
+  color: #d6955b;
 }

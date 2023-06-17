@@ -1,9 +1,7 @@
-.div {
-  margin-top: 20px;
-}
-
 .donnees{
   text-align: center;
+  margin-top: 20px;
+  background-color: white;
 }
 
 .p {
