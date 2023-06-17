@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CustomValidators } from "../custom-validators";
+import { UtilisateurService } from "../utilisateur.service";
+import { first } from "rxjs";
+import { Utilisateur } from "../models/utilisateur.model";
 
 @Component({
   selector: 'app-inscription',
@@ -8,6 +11,8 @@ import { CustomValidators } from "../custom-validators";
   styleUrls: ['./inscription.component.scss']
 })
 export class InscriptionComponent implements OnInit {
+
+  utilisateur!: Utilisateur;
 
   inscriptionForm = new FormGroup({
 
@@ -64,14 +69,40 @@ export class InscriptionComponent implements OnInit {
     restaurateur: new FormControl('')
   });
 
-  constructor() {
+  constructor(private inscription: UtilisateurService) {
+
   }
 
   ngOnInit(): void {
   }
 
   onInscriptionForm() {
-    console.log(this.inscriptionForm.value);
-  }
+    let restaurateur: number;
+    if (<string>this.inscriptionForm.value.restaurateur) {
+      restaurateur = 1;
+    } else {
+      restaurateur = 0;
+    }
 
+    this.utilisateur = new Utilisateur(
+      <string>this.inscriptionForm.value.prenom,
+      <string>this.inscriptionForm.value.nom,
+      <string>this.inscriptionForm.value.email,
+      <string>this.inscriptionForm.value.mdp,
+      restaurateur,
+    );
+
+
+    console.log(this.inscriptionForm.value);
+
+    this.inscription.inscription(this.utilisateur)
+      .pipe(first())
+      .subscribe(data => {
+        console.log("Success");
+        this.inscriptionForm.reset();
+      },
+        error => {
+        console.log(error);
+        });
+  }
 }
