@@ -2,7 +2,6 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs";
 import { Utilisateur } from "./models/utilisateur.model";
-import { Router, RouterEvent } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
