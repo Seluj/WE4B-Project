@@ -17,11 +17,14 @@ export class UtilisateurService implements OnInit {
   }
 
   public inscription(data: Utilisateur) {
-    console.log("On est dans la merde");
     return this.http.post(`${this.baseUrl}/inscription.php`, {data: data})
       .pipe(map((res: any) => {
-        console.log("On est toujours dans la meme merde")
         return res['data'];
       }));
   }
+
+  public connexion() {
+
+  }
+
 }
