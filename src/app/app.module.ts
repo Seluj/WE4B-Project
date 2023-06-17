@@ -19,6 +19,7 @@ import { Error404Component } from './error404/error404.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule , ReactiveFormsModule} from "@angular/forms";
 import { FooterComponent } from './footer/footer.component';
+import { NgOptimizedImage } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

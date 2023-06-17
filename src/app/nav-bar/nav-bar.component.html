@@ -1,24 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink=''>Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" routerLink=''>
+    <img
+      ngSrc="assets/logo-black-without-background.png"
+      alt=""
+      height="60" width="60"
+    />
+  </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink='/student'>Add Student</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink='/teacher'>Add Professor</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink='/employee'>Add Staff</a>
-      </li>
-    </ul>
-  </div>
 
-  <button routerLink="/connexion">Connexion</button>
+
+  <!--
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          Some text
+        </li>
+        <li class="nav-item">
+          Some other text
+        </li>
+        <li class="nav-item">
+          cloucou
+        </li>
+      </ul>
+    </div>
+  -->
+  <button routerLink="/connexion" class="nav">Connexion</button>
 </nav>
-
