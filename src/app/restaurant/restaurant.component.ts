@@ -13,6 +13,7 @@ export class RestaurantComponent implements OnInit {
   class!: string;
 
   ngOnInit(): void {
+    this.restaurant = new Restaurant("BOB", "5 rue du BOB", "../../assets/restaurant_belfort.jpg", "wow trop bien BOB", 0, 0, 0);
     this.liked = false;
     this.class = "like";
   }
