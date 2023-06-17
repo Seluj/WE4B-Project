@@ -30,5 +30,13 @@ export class RestaurantsService implements OnInit {
     )
   }
 
+  public getRestaurantById(id: number) {
+    return this.http.get(`${this.baseUrl}/getRestaurantById.php?id=${id}`).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
+
 
 }
