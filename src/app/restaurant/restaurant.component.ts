@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Restaurant } from '../models/restaurant.model';
 import { ActivatedRoute } from '@angular/router';
+import {RestaurantsService} from "../restaurants.service";
 
 @Component({
   selector: 'app-restaurant',
@@ -9,36 +10,40 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RestaurantComponent implements OnInit {
   @Input() restaurant!: Restaurant;
-
-  restaurantId!: string;
   liked!: boolean;
-  class!: string;
+  popularity!: number;
 
-  constructor(private route: ActivatedRoute) { }
+  error = '';
+  success = '';
+
+  constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService) {}
+
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.restaurantId = params['id'];
+      this.restaurant.id = params['id'];
     });
-    if (this.restaurantId === "1") {
-      this.restaurant = new Restaurant( 1,"BOB", "5 rue du BOB", "../../assets/restaurant_belfort.jpg", "wow trop bien BOB", 0, 0, 0);
-    } else if (this.restaurantId === "2") {
-      this.restaurant = new Restaurant(2, "JIMBOB", "5 rue du JIMBOB", "../../assets/restaurant_berlin.jpg", "wow trop bien JIMBOB", 0, 0, 0);
-    }
-    this.liked = false;
-    this.class = "like";
+    this.getRestaurantById();
   }
 
-  onLike() {
-    if (this.liked) {
-      this.restaurant.popularite--;
-      this.liked = false;
-      this.class = "like";
-    } else {
-      this.restaurant.popularite++;
-      this.liked = true;
-      this.class = "unlike";
-    }
+  getRestaurantById(): void {
+    this.restaurantService.getRestaurantById(this.restaurant.id).subscribe((data: any) => {
+        if (data) {
+          this.restaurant = new Restaurant(
+            data.nom,
+            data.adresse,
+            data.image,
+            data.description,
+            data.prix,
+            data.user_id,
+            data.date_edit
+          );
+        }
+      },
+      (err) => {
+        console.log(err);
+        this.error = 'Failed to get restaurant details.';
+      }
+    );
   }
-
 }
