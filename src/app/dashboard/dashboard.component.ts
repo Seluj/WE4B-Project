@@ -16,5 +16,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.utilisateur = new Utilisateur("Michel","Schmürz","SchmurzMichMich@gmail.com","mdp")
+    this.restaurateur = new Restaurateur("Bernard","LaMouette","bernardmoumou@gmail.com","mdp", 1)
   }
 }
