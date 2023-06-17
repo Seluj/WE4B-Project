@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UtilisateurComponent} from "../utilisateur/utilisateur.component";
 import {Utilisateur} from "../models/utilisateur.model";
 import {Restaurateur} from "../models/restaurateur.model";
 
@@ -15,7 +14,7 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.utilisateur = new Utilisateur("Michel","Schmürz","SchmurzMichMich@gmail.com","mdp")
+    this.utilisateur = new Utilisateur("Michel","Schmürz","SchmurzMichMich@gmail.com","mdp", 0)
     this.restaurateur = new Restaurateur("Bernard","LaMouette","bernardmoumou@gmail.com","mdp", 1)
   }
 }

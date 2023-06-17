@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CustomValidators } from "../custom-validators";
+import { UtilisateurService } from "../utilisateur.service";
+import { first } from "rxjs";
+import { Utilisateur } from "../models/utilisateur.model";
 
 @Component({
   selector: 'app-inscription',
@@ -8,6 +11,8 @@ import { CustomValidators } from "../custom-validators";
   styleUrls: ['./inscription.component.scss']
 })
 export class InscriptionComponent implements OnInit {
+
+  utilisateur!: Utilisateur;
 
   inscriptionForm = new FormGroup({
 
@@ -36,7 +41,7 @@ export class InscriptionComponent implements OnInit {
     ]),
 
     // Vérification du mot de passe
-    pwd: new FormControl('', [
+    mdp: new FormControl('', [
       // Obligation de mettre un mot de passe
       Validators.required,
       // Obligation de mettre 1 chiffre
@@ -49,29 +54,55 @@ export class InscriptionComponent implements OnInit {
       CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, {hasSpecialCharacters: true}),
       // Obligation de mettre au moins 8 caractères
       Validators.minLength(8),
-      // Doit correspondre au champ pwd2
-      CustomValidators.matchValidator('pwd2', true)
+      // Doit correspondre au champ mdp2
+      CustomValidators.matchValidator('mdp2', true)
     ]),
 
     // Vérification du mot de passe de confirmation
-    pwd2: new FormControl('', [
+    mdp2: new FormControl('', [
       // Obligation de mettre un mot de passe de confirmation
       Validators.required,
-      // Doit correspondre au champ pwd
-      CustomValidators.matchValidator('pwd')
+      // Doit correspondre au champ mdp
+      CustomValidators.matchValidator('mdp')
     ]),
 
     restaurateur: new FormControl('')
   });
 
-  constructor() {
+  constructor(private inscription: UtilisateurService) {
+
   }
 
   ngOnInit(): void {
   }
 
   onInscriptionForm() {
-    console.log(this.inscriptionForm.value);
-  }
+    let restaurateur: number;
+    if (<string>this.inscriptionForm.value.restaurateur) {
+      restaurateur = 1;
+    } else {
+      restaurateur = 0;
+    }
 
+    this.utilisateur = new Utilisateur(
+      <string>this.inscriptionForm.value.prenom,
+      <string>this.inscriptionForm.value.nom,
+      <string>this.inscriptionForm.value.email,
+      <string>this.inscriptionForm.value.mdp,
+      restaurateur,
+    );
+
+
+    console.log(this.inscriptionForm.value);
+
+    this.inscription.inscription(this.utilisateur)
+      .pipe(first())
+      .subscribe(data => {
+        console.log("Success");
+        this.inscriptionForm.reset();
+      },
+        error => {
+        console.log(error);
+        });
+  }
 }

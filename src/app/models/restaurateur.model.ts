@@ -6,6 +6,6 @@ export class Restaurateur extends Utilisateur {
               email: string,
               password: string,
               public id_restaurant : number) {
-    super(prenom, nom, email, password);
+    super(prenom, nom, email, password, id_restaurant);
   }
 }
