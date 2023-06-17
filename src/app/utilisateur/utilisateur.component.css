@@ -1,22 +1,3 @@
-.utilisateur {
-  display: inline-block;
-  width: 1000px;
-  height: 330px;
-  margin: 0px 10px;
-  /* border: solid 1px blue; */
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 1rem 1rem 1rem -1rem #9e9e9e33;
-}
-
-.utilisateur * {
-  text-align:center;
-}
-.h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
 .div {
   margin-top: 20px;
 }
@@ -30,13 +11,4 @@
   line-height: 1.5;
 }
 
-.boutons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-}
 
-.boutons button {
-  margin-bottom: 10px;
-}
