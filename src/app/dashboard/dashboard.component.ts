@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UtilisateurComponent} from "../utilisateur/utilisateur.component";
 import {Utilisateur} from "../models/utilisateur.model";
 import {Restaurateur} from "../models/restaurateur.model";
 
