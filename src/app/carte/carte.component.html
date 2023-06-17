@@ -1,12 +1,15 @@
 <div class="carte">
-  <img src="{{ carte.imageUrl }}" alt="" class="carte-image">
-  <div class="carte-info">
-    <h3>{{ carte.title }}</h3>
-    <h5>
-      <button (click)="onLike()" class="{{ class }}">
-        <i class="fa-solid fa-star"></i> {{ carte.popularite }}
-      </button>
-    </h5><br>
-    <h5>{{ carte.adresse }}</h5>
-  </div>
+  <button [routerLink]="['restaurant', carte.id]">
+    <img src="{{ carte.imageUrl }}" alt="" class="carte-image">
+    <div class="carte-info">
+      <h3>{{ carte.title }}</h3>
+      <h5>
+        <button (click)="onLike()" class="{{ class }}">
+          <i class="fa-solid fa-star"></i> {{ carte.popularite }}
+        </button>
+      </h5>
+      <br>
+      <h5>{{ carte.adresse }}</h5>
+    </div>
+  </button>
 </div>
