@@ -20,6 +20,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule , ReactiveFormsModule} from "@angular/forms";
 import { FooterComponent } from './footer/footer.component';
 import { NgOptimizedImage } from "@angular/common";
+import { AjoutRestaurantComponent } from './ajout-restaurant/ajout-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgOptimizedImage } from "@angular/common";
     UtilisateurComponent,
     RestaurateurComponent,
     Error404Component,
-    FooterComponent
+    FooterComponent,
+    AjoutRestaurantComponent
   ],
   imports: [
     BrowserModule,
