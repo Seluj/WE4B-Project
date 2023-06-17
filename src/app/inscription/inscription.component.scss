@@ -68,6 +68,13 @@ input {
   }
 }
 
+.pwdConfirm {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding-top: 1.5rem;
+}
+
 .input-label {
   color: rgba(234, 246, 244, 0.5);
   position: absolute;
@@ -108,7 +115,7 @@ input {
   font-weight: 500;
   background-color: #d4945a;
   border-radius: 6px;
-  color: #eaf6f4;
+  color: #000000;
   border: 0;
 
   &:focus {
@@ -126,6 +133,7 @@ input {
     display: block;
     color: #d4945a;
     text-decoration: none;
+    font-weight: bold;
   }
 }
 
@@ -134,7 +142,7 @@ input {
 }
 
 .error {
-  color: rgba(255, 0, 0, 0.8);
+  color: rgb(83, 24, 29);
   font-size: .875rem;
   margin-top: .25rem;
 }
