@@ -7,7 +7,7 @@ import { Utilisateur } from "./models/utilisateur.model";
   providedIn: 'root'
 })
 export class UtilisateurService implements OnInit {
-  baseUrl = 'http://localhost/WE4B-Project/api';
+  baseUrl: string = 'http://localhost/WE4B-Project/api';
 
   constructor(private http: HttpClient) {
 
@@ -23,8 +23,39 @@ export class UtilisateurService implements OnInit {
       }));
   }
 
-  public connexion() {
-
+  public connexion(data: Utilisateur) {
+    return this.http.post(`${this.baseUrl}/connexion.php`, {data: data})
+      .pipe(map((res: any) => {
+        return res['data'];
+      }))
   }
 
+  setSessionItem(name: string, value: string): void {
+    sessionStorage.setItem(name, value);
+  }
+
+  getSessionItem(name: string): string | null {
+    return sessionStorage.getItem(name);
+  }
+
+  deleteSessionItem(name: string): void {
+    sessionStorage.removeItem(name);
+  }
+
+  deleteSession(): void {
+    sessionStorage.clear();
+  }
+
+  estConnecte(): boolean {
+    return this.getSessionItem("id") !== null;
+  }
+
+  estRestaurateur(): boolean {
+    let restaurateur: string | null = this.getSessionItem("restaurateur")
+    if (restaurateur === null) {
+      return false
+    } else {
+      return parseInt(restaurateur) === 1;
+    }
+  }
 }

@@ -76,7 +76,7 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onInscriptionForm() {
+  onInscriptionForm(): void {
     let restaurateur: number;
     if (<string>this.inscriptionForm.value.restaurateur) {
       restaurateur = 1;
