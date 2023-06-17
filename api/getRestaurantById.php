@@ -11,11 +11,17 @@ if (isset($_GET['id'])) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $data = [
-      'data' => $result,
-    ];
-
-    echo json_encode($data);
+    if ($result) {
+      $data = [
+        'data' => $result,
+      ];
+      echo json_encode($data);
+    } else {
+      $data = [
+        'error' => 'No restaurant found with the provided ID',
+      ];
+      echo json_encode($data);
+    }
   } catch (PDOException $e) {
     $data = [
       'error' => $e->getMessage(),
@@ -24,7 +30,7 @@ if (isset($_GET['id'])) {
   }
 } else {
   $data = [
-  'error' => 'No ID provided',
+    'error' => 'No ID provided',
   ];
   echo json_encode($data);
 }
