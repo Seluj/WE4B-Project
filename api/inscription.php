@@ -7,10 +7,10 @@ header("Content-Type: application/json; charset=UTF-8");
 
 include_once("databaseFunctions.php");
 $conn = connectDatabase();
-$postdata = file_get_contents("php://input");
+$postData = file_get_contents("php://input");
 
-if (isset($postdata) && !empty($postdata)) {
-  $request = json_decode($postdata);
+if (isset($postData) && !empty($postData)) {
+  $request = json_decode($postData);
 
   $prenom = trim($request->data->prenom);
   $nom = trim($request->data->nom);
