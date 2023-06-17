@@ -1,24 +1,54 @@
 <div class="container">
-  <!-- code here -->
   <div class="card">
     <div class="card-image">
 
     </div>
     <form class="card-form" [formGroup]="connexionForm" (ngSubmit)="onConnnexionForm()">
+
+      <!-- Gestions de l'email -->
       <div class="input">
         <input type="text" class="input-field" formControlName="email" required/>
         <label class="input-label">Email</label>
       </div>
+      <div class="error"
+           *ngIf="connexionForm.controls.email?.invalid && (connexionForm.controls.email?.dirty || connexionForm.controls.email?.touched)">
+        <div *ngIf="connexionForm.controls.email?.errors?.['required']">
+          L'email est requis.
+        </div>
+        <div *ngIf="connexionForm.controls.email?.hasError('hasAt'); else elseBlock">
+          L'email doit contenir un @.
+        </div>
+        <ng-template #elseBlock>
+          <div *ngIf="connexionForm.controls.email?.errors?.['pattern']">
+            <div *ngIf="!connexionForm.controls.email?.hasError('hasCapitalCase'); else elseBlock2">
+              L'email ne doit pas contenir une majuscule.
+            </div>
+            <ng-template #elseBlock2>
+              L'email n'est pas valide.
+            </ng-template>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Gestions du mot de passe -->
       <div class="input">
         <input type="password" class="input-field" formControlName="pwd" required/>
         <label class="input-label">Password</label>
       </div>
+      <div class="error"
+           *ngIf="connexionForm.controls.pwd?.invalid && (connexionForm.controls.pwd?.dirty || connexionForm.controls.pwd?.touched)">
+        <div *ngIf="connexionForm.controls.pwd?.errors?.['required']">
+          Le mot de passe est requis.
+        </div>
+      </div>
+
       <div class="action">
         <button class="action-button">Connexion</button>
       </div>
     </form>
+
     <div class="card-info">
-      <p>Tu n'as pas de compte ?<a href="/inscription">inscrit toi ici</a></p>
+      <p>Tu n'as pas de compte ?<a href="/inscription">Inscrit toi ici</a></p>
     </div>
   </div>
 </div>
