@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Carte } from '../models/carte.model';
 
 @Component({
   selector: 'app-carte',

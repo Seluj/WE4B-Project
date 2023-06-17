@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Carte } from '../models/carte.model';
 import {Restaurant} from "../models/restaurant.model";
 import {RestaurantsService} from "../restaurants.service";
 
