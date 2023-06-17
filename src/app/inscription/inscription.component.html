@@ -56,39 +56,40 @@
 
       <!-- Gestion du mot de passe -->
       <div class="input">
-        <input type="password" class="input-field" formControlName="pwd" required/>
+        <input type="password" class="input-field" formControlName="mdp" required/>
         <label class="input-label">Mot de passe</label>
       </div>
       <div class="error"
-           *ngIf="inscriptionForm.controls.pwd?.invalid && (inscriptionForm.controls.pwd?.dirty || inscriptionForm.controls.pwd?.touched)">
-        <div *ngIf="inscriptionForm.controls.pwd?.errors?.['required']">
+           *ngIf="inscriptionForm.controls.mdp?.invalid && (inscriptionForm.controls.mdp?.dirty || inscriptionForm.controls.mdp?.touched)">
+        <div *ngIf="inscriptionForm.controls.mdp?.errors?.['required']">
           Le mot de passe est requis.
         </div>
-        <div *ngIf="inscriptionForm.controls.pwd?.errors?.['minlength']">
+
+        <div *ngIf="inscriptionForm.controls.mdp?.errors?.['minlength']">
           Le mot de passe doit contenir au moins 6 caractères.
         </div>
-        <div *ngIf="inscriptionForm.controls.pwd?.hasError('hasNumber')">
+        <div *ngIf="inscriptionForm.controls.mdp?.hasError('hasNumber')">
           Le mot de passe doit contenir au moins un chiffre.
         </div>
-        <div *ngIf="inscriptionForm.controls.pwd?.hasError('hasCapitalCase')">
+        <div *ngIf="inscriptionForm.controls.mdp?.hasError('hasCapitalCase')">
           Le mot de passe doit contenir au moins une majuscule.
         </div>
-        <div *ngIf="inscriptionForm.controls.pwd?.hasError('hasSmallCase')">
+        <div *ngIf="inscriptionForm.controls.mdp?.hasError('hasSmallCase')">
           Le mot de passe doit contenir au moins une minuscule.
         </div>
-        <div *ngIf="inscriptionForm.controls.pwd?.hasError('hasSpecialCharacters')">
+        <div *ngIf="inscriptionForm.controls.mdp?.hasError('hasSpecialCharacters')">
           Le mot de passe doit contenir au moins un caractère spécial.
         </div>
       </div>
 
       <!-- Gestion de la confirmation du mot de passe -->
-      <div class="pwdConfirm">
-        <input type="password" class="input-field" formControlName="pwd2" required/>
+      <div class="mdpConfirm">
+        <input type="password" class="input-field" formControlName="mdp2" required/>
         <label class="input-label">Confirmation</label>
       </div>
       <div class="error"
-           *ngIf="inscriptionForm.controls.pwd2?.invalid && (inscriptionForm.controls.pwd2?.dirty || inscriptionForm.controls.pwd2?.touched)">
-        <div *ngIf="inscriptionForm.controls.pwd2.hasError('matching')">
+           *ngIf="inscriptionForm.controls.mdp2?.invalid && (inscriptionForm.controls.mdp2?.dirty || inscriptionForm.controls.mdp2?.touched)">
+        <div *ngIf="inscriptionForm.controls.mdp2.hasError('matching')">
           Les mots de passe ne correspondent pas.
         </div>
       </div>

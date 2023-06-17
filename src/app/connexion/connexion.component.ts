@@ -24,7 +24,7 @@ export class ConnexionComponent implements OnInit {
     ]),
 
     // Vérification du mot de passe
-    pwd: new FormControl('', Validators.required)
+    mdp: new FormControl('', Validators.required)
   });
 
   constructor() {

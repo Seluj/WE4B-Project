@@ -32,12 +32,12 @@
 
       <!-- Gestions du mot de passe -->
       <div class="input">
-        <input type="password" class="input-field" formControlName="pwd" required/>
+        <input type="password" class="input-field" formControlName="mdp" required/>
         <label class="input-label">Password</label>
       </div>
       <div class="error"
-           *ngIf="connexionForm.controls.pwd?.invalid && (connexionForm.controls.pwd?.dirty || connexionForm.controls.pwd?.touched)">
-        <div *ngIf="connexionForm.controls.pwd?.errors?.['required']">
+           *ngIf="connexionForm.controls.mdp?.invalid && (connexionForm.controls.mdp?.dirty || connexionForm.controls.mdp?.touched)">
+        <div *ngIf="connexionForm.controls.mdp?.errors?.['required']">
           Le mot de passe est requis.
         </div>
       </div>
