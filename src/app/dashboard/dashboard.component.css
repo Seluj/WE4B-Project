@@ -1,12 +1,13 @@
 .utilisateur {
-  display: inline-block;
-  width: 1000px;
-  height: 330px;
-  margin: 0px 10px;
-  /* border: solid 1px blue; */
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 1rem 1rem 1rem -1rem #9e9e9e33;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 425px;
+  background-color: #d4945a;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.25);
+  padding: .75rem;
 }
 
 .utilisateur * {
