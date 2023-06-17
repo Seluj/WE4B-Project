@@ -1,27 +1,80 @@
-<div class="utilisateur">
-  <h1>Mon compte</h1>
-  <ng-container *ngIf="restaurateur; else afficherUtilisateur">
-    <app-restaurateur [restaurateur]="restaurateur"></app-restaurateur>
-  </ng-container>
-  <ng-template #afficherUtilisateur>
-    <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
-  </ng-template>
+<div class="dashboard">
 
-  <div class="boutons">
-    <button><!--(click)="" -->
-      Gérer mon compte
-    </button>
+  <!-- Div contenant les données de l'utilisateur : affiche son compte, et son restaurant dans le cas d'un restaurateur -->
+  <div class="affichage">
 
-    <button><!--(click)="" -->
-      Modifier le mot de passe
-    </button>
+    <!-- Div affichant le compte de l'utilisateur -->
+    <div class="utilisateur">
 
+      <h1>Mon compte</h1>
+
+      <ng-container *ngIf="restaurateur; else afficherUtilisateur">
+        <app-restaurateur [restaurateur]="restaurateur"></app-restaurateur>
+      </ng-container>
+      <ng-template #afficherUtilisateur>
+        <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
+      </ng-template>
+    </div>
+
+    <!-- S'il s'agit d'un restaurateur, on affiche son restaurant -->
     <ng-template *ngIf="restaurateur">
-      <button><!--(click)="" -->
-        Gérer mon Restaurant
-      </button>
+
+      <div class="restaurant">
+        <app-carte [carte]="carte"></app-carte>
+      </div>
+
     </ng-template>
+
   </div>
+
+  <!-- Div permettant à l'utilisateur de modifier son compte, et son restaurant s'il s'agit d'un restaurateur -->
+  <div class="modification">
+    <div class="compte">
+
+    </div>
+    <ng-template *ngIf="restaurateur">
+
+      <!-- Si le restaurateur a déjà saisi un restaurant, on lui propose de modifier ses données -->
+      <ng-container *ngIf="restaurant; else creer_restaurant">
+        <div class="restaurant">
+
+          <form class="modifier_restaurant">
+
+            <div class="input">
+              <input type="text" class="input-field" value="{{restaurant.nom}}" required/>
+              <label class="input-label">Nom : </label>
+            </div>
+
+            <div class="input">
+              <input type="text" class="input-field" value="{{restaurant.adresse}}" required/>
+              <label class="input-label">Adresse : </label>
+            </div>
+
+            <!-- image -->
+
+            <div class="input">
+              <input type="text" class="input-field" value="{{restaurant.description}}" required/>
+              <label class="input-label"> Description : </label>
+            </div>
+
+            <div class="input">
+              <input type="text" class="input-field" value="{{restaurant.prix}}" required/>
+              <label class="input-label">Prix : </label>
+            </div>
+
+          </form>
+        </div>
+
+      </ng-container>
+
+      <!-- Si le restaurateur n'a pas de restaurant, on lui propose d'en saisir un -->
+      <ng-template #creer_restaurant>
+        <div class="creer_restaurant">
+
+        </div>
+      </ng-template>
+    </ng-template>
+
+  </div>
+
 </div>
-
-
