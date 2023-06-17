@@ -1,4 +1,27 @@
-<p>dashboard works!</p>
+<div class="utilisateur">
+  <h1>Mon compte</h1>
+  <ng-container *ngIf="restaurateur; else afficherUtilisateur">
+    <app-restaurateur [restaurateur]="restaurateur"></app-restaurateur>
+  </ng-container>
+  <ng-template #afficherUtilisateur>
+    <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
+  </ng-template>
 
-<app-utilisateur></app-utilisateur>
-<app-restaurateur></app-restaurateur>
+  <div class="boutons">
+    <button><!--(click)="" -->
+      Gérer mon compte
+    </button>
+
+    <button><!--(click)="" -->
+      Modifier le mot de passe
+    </button>
+
+    <ng-template *ngIf="restaurateur">
+      <button><!--(click)="" -->
+        Gérer mon Restaurant
+      </button>
+    </ng-template>
+  </div>
+</div>
+
+
