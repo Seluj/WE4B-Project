@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component:InscriptionComponent },
-  { path: 'restaurant', component:RestaurantComponent },
+  { path: 'restaurant/:id', component:RestaurantComponent },
   { path: 'dashboard', component:DashboardComponent },
   { path: 'recherche', component:PageRechercheComponent },
   { path: '**', component: Error404Component }
