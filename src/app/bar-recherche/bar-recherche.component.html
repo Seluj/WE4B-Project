@@ -1,1 +1,45 @@
-<p>bar-recherche works!</p>
+<form class="restaurant-form" (ngSubmit)="rechercheRestaurant()">
+    <div class="form-group">
+      <label class="restaurant-label">Prix:</label>
+      <div class="restaurant-checkbox-group">
+        <div class="form-check restaurant-checkbox">
+          <input type="checkbox" class="form-check-input" id="cheap" name="prix" value="cheap" [(ngModel)]="searchCriteria.prix.cheap">
+          <label class="form-check-label" for="cheap">€</label>
+        </div>
+        <div class="form-check restaurant-checkbox">
+          <input type="checkbox" class="form-check-input" id="moderate" name="prix" value="moderate" [(ngModel)]="searchCriteria.prix.moderate">
+          <label class="form-check-label" for="moderate">€€</label>
+        </div>
+        <div class="form-check restaurant-checkbox">
+          <input type="checkbox" class="form-check-input" id="expensive" name="prix" value="expensive" [(ngModel)]="searchCriteria.prix.expensive">
+          <label class="form-check-label" for="expensive">€€€</label>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label class="restaurant-label" for="adresse">Code postal:</label>
+      <input type="text" class="form-control restaurant-input" id="adresse" name="adresse" [(ngModel)]="searchCriteria.adresse">
+    </div>
+  
+    <div class="form-group">
+      <label class="restaurant-label">Type:</label>
+      <div class="restaurant-checkbox-group">
+        <div class="form-check restaurant-checkbox">
+          <input type="checkbox" class="form-check-input" id="type1" name="type" value="type1" [(ngModel)]="searchCriteria.type.type1">
+          <label class="form-check-label" for="type1">Fast Food</label>
+        </div>
+        <div class="form-check restaurant-checkbox">
+          <input type="checkbox" class="form-check-input" id="type2" name="type" value="type2" [(ngModel)]="searchCriteria.type.type2">
+          <label class="form-check-label" for="type2">Familial</label>
+        </div>
+        <div class="form-check restaurant-checkbox">
+          <input type="checkbox" class="form-check-input" id="type3" name="type" value="type3" [(ngModel)]="searchCriteria.type.type3">
+          <label class="form-check-label" for="type3">Romantique</label>
+        </div>
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary restaurant-button">Chercher</button>
+</form>
+  
