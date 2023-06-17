@@ -1,6 +1,7 @@
 button {
   border: 0;
   background-color: inherit;
+  /*border: green;*/
 }
 
 .unlike {
@@ -12,7 +13,7 @@ button {
   width: 300px;
   height: 330px;
   margin: 0px 10px;
-  /* border: solid 1px blue; */
+  /*border: solid 1px blue;*/
   border-radius: 5px;
   background-color: white;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -26,6 +27,6 @@ button {
 }
 .carte .carte-info {
   height: 130px;
-  /* border: solid 1px purple; */
+  /*border: solid 1px purple;*/
   padding: 0px 5px;
 }

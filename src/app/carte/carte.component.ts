@@ -7,7 +7,11 @@ import { Carte } from '../models/carte.model';
   styleUrls: ['./carte.component.css']
 })
 export class CarteComponent implements OnInit {
-  @Input() carte!: Carte;
+  popularite!: number;
+  @Input() nom!: string;
+  @Input() adresse!: string;
+  @Input() image!: string;
+  @Input() id!: number;
 
   liked!: boolean;
   class!: string;
@@ -15,15 +19,16 @@ export class CarteComponent implements OnInit {
   ngOnInit(): void {
     this.liked = false;
     this.class = "like";
+    this.popularite = 0;
   }
 
   onLike() {
-    if (this.liked === true) {
-      this.carte.popularite--;
+    if (this.liked) {
+      this.popularite--;
       this.liked = false;
       this.class = "like";
     } else {
-      this.carte.popularite++;
+      this.popularite++;
       this.liked = true;
       this.class = "unlike";
     }

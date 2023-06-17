@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Carte } from '../models/carte.model';
+import {Restaurant} from "../models/restaurant.model";
+import {RestaurantsService} from "../restaurants.service";
 
 @Component({
   selector: 'app-grille-carte',
@@ -8,15 +10,37 @@ import { Carte } from '../models/carte.model';
 })
 export class GrilleCarteComponent implements OnInit {
   popularity!: number;
-  carte1!: Carte;
-  carte2!: Carte;
-  carte3!: Carte;
-  carte4!: Carte;
+
+  restaurants: Restaurant[] = [];
+  error = '';
+  success = '';
+
+  constructor(private restaurantService: RestaurantsService) {
+  }
 
   ngOnInit(): void {
-    this.carte1 = new Carte(1,"Restaurant Belfort", "90000 Belfort, France", "../../assets/restaurant_belfort.jpg", 5);
-    this.carte2 = new Carte(2,"Restaurant Lyon", "69000 Lyon, France", "../../assets/restaurant_lyon.jpg", 15);
-    this.carte3 = new Carte(3,"Restaurant Paris", "75000 Paris, France", "../../assets/restaurant_paris.png", 59);
-    this.carte4 = new Carte(4,"Restaurant Belfort", "10115 Berlin, Germany", "../../assets/restaurant_berlin.jpg", 48);
+    this.getRestaurants();
+  }
+
+  getRestaurants(): void {
+    this.restaurantService.getAllRestaurants().subscribe(
+      (data: any) => {
+        for (let i = 0; i < data.size; i++) {
+          this.restaurants[i].id = data[i].id;
+          this.restaurants[i].nom = data[i].nom;
+          this.restaurants[i].adresse = data[i].adresse;
+          this.restaurants[i].image = data[i].image;
+          this.restaurants[i].description = data[i].description;
+          this.restaurants[i].prix = data[i].prix;
+          this.restaurants[i].user_id = data[i].user_id;
+          this.restaurants[i].popularite = data[i].popularite;
+        }
+        this.restaurants = data;
+      },
+      (err) => {
+        console.log(err);
+        this.error = err;
+      }
+    );
   }
 }

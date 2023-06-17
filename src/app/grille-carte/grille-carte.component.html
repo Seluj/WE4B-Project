@@ -1,6 +1,6 @@
+<div *ngIf="error">{{ error }}</div>
+<div *ngIf="success">{{ success }}</div>
+
 <div class="grille">
-  <app-carte [carte]="carte1"></app-carte>
-  <app-carte [carte]="carte2"></app-carte>
-  <app-carte [carte]="carte3"></app-carte>
-  <app-carte [carte]="carte4"></app-carte>
+  <app-carte *ngFor="let item of restaurants" [id]="item.id" [nom]="item.nom" [adresse]="item.adresse" [image]="item.image"></app-carte>
 </div>
