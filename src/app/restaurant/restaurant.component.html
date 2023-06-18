@@ -4,19 +4,24 @@
     <div class="card-body">
       <h1 class="card-title">{{ restaurant.nom }}</h1>
       <div class="image-container">
-       <img src="{{ restaurant.image }}" alt="" class="img-fluid carte-image">
+       <img src="../../assets/{{ restaurant.image }}" alt="" class="img-fluid carte-image">
        <div class="image-separator"></div>
        <br><br>
       </div>
       <div class="text-left">
-        <p class="mt-3">Adresse: {{ restaurant.adresse }} | Prix: {{ restaurant.prix }}</p>
+        <p class="mt-3">Adresse: {{ restaurant.adresse }} | Prix:
+          <span *ngIf="+restaurant.prix === 1">&euro;</span>
+          <span *ngIf="+restaurant.prix === 2">&euro;&euro;</span>
+          <span *ngIf="+restaurant.prix === 3">&euro;&euro;&euro;</span>
+          | Date mise à jour: {{ restaurant.date_edit }}
+        </p>
         <p class="card-text">{{ restaurant.description }}</p>
         <div class="popularity">
           <span class="star">&#9733;</span>
           <span class="popularity-number">{{ restaurant.popularite }}</span>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 <br>
