@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Utilisateur } from "../models/utilisateur.model";
 import { Restaurant } from "../models/restaurant.model";
 import { RestaurantsService } from "../restaurants.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-restaurateur',
@@ -13,7 +14,11 @@ export class RestaurateurComponent implements OnInit {
 
   restaurant!: Restaurant;
 
-  constructor(public serviceRestaurant: RestaurantsService) {
+  constructor(public serviceRestaurant: RestaurantsService, private router: Router) {
+  }
+
+  redirectAjoutRestaurant() {
+    this.router.navigate(['/ajoutRestaurant']);
   }
 
   ngOnInit(): void {

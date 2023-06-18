@@ -2,6 +2,11 @@
   <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
 </div>
 <h1>Mon restaurant</h1>
-<div class="restaurant">
+<div class="restaurant" *ngIf="restaurant">
   <app-carte [nom]="restaurant.nom" [adresse]="restaurant.adresse" [image]="restaurant.image" [id]="restaurant.id"></app-carte>
+</div>
+
+<div class="no-restaurant" *ngIf="!restaurant">
+  <p>Vous n'avez pas encore de restaurant</p>
+  <button class="btn btn-primary custom-button" (click)="redirectAjoutRestaurant()">Ajouter votre Restaurant</button>
 </div>

@@ -15,4 +15,8 @@
   line-height: 1.5;
 }
 
-
+.custom-button {
+  background-color: #18524e;
+  color: #fff;
+  outline: none;
+}
