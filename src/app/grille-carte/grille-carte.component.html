@@ -2,5 +2,7 @@
 <div *ngIf="success">{{ success }}</div>
 
 <div class="grille">
-  <app-carte *ngFor="let item of restaurants" [id]="item.id" [nom]="item.nom" [adresse]="item.adresse" [image]="item.image"></app-carte>
+  <ng-container *ngFor="let item of restaurants">
+    <app-carte [id]="item.id" [nom]="item.nom" [adresse]="item.adresse" [image]="item.image"></app-carte>
+  </ng-container>
 </div>
