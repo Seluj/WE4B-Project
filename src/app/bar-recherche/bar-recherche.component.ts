@@ -52,6 +52,6 @@ export class BarRechercheComponent {
       type1.toString(),
       type2.toString(),
       type3.toString()
-    ]);
+    ], {replaceUrl: true});
   }
 }

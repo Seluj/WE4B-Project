@@ -11,8 +11,8 @@ $type1 = isset($_GET['type1']) ? $_GET['type1'] : false;
 $type2 = isset($_GET['type2']) ? $_GET['type2'] : false;
 $type3 = isset($_GET['type3']) ? $_GET['type3'] : false;
 
-// Construct the SQL query based on the search parameters
-$sql = "SELECT * FROM restaurants WHERE";
+$restaurants = [];
+$sql = "SELECT * FROM 'restaurants' WHERE";
 
 $conditions = [];
 
@@ -46,27 +46,22 @@ if ($type3) {
 
 $sql .= implode(" AND ", $conditions);
 
-// Execute the query
-$result = mysqli_query($conn, $sql);
-
 // Check if any results are found
-if (mysqli_num_rows($result) > 0) {
-  $rows = [];
+if ($result = mysqli_query($conn, $sql)) {
+  $i = 0;
 
-  // Fetch the results as an associative array
   while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row;
+    $restaurants[$i]['id'] = $row['id'];
+    $restaurants[$i]['nom'] = $row['nom'];
+    $restaurants[$i]['adresse'] = $row['adresse'];
+    $restaurants[$i]['image'] = $row['image'];
+    $restaurants[$i]['description'] = $row['description'];
+    $restaurants[$i]['prix'] = $row['prix'];
+    $restaurants[$i]['date_edit'] = $row['date_edit'];
+    $restaurants[$i]['user_id'] = $row['user_id'];
+    $i++;
   }
-
-  $data = [
-    'data' => $rows,
-  ];
-
-   echo json_encode($data);
+  echo json_encode(['data' => $restaurants]);
 } else {
-  $data = [
-    'error' => 'No matching restaurants found.',
-  ];
-
-  echo json_encode($data);
+  http_response_code(404);
 }
