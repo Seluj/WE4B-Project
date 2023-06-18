@@ -3,7 +3,7 @@
 </div>
 <h1>Mon restaurant</h1>
 <div class="restaurant" *ngIf="restaurant">
-  <app-carte [restaurant]="restaurant"></app-carte>
+  <app-carte class="carte" [restaurant]="restaurant"></app-carte>
 </div>
 
 <div class="no-restaurant" *ngIf="!restaurant">
