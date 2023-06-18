@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'recherche', component: PageRechercheComponent },
+  { path: 'recherche/:cheap/:moderate/:expensive/:adresse/:type1/:type2/:type3', component: PageRechercheComponent },
   { path: 'ajoutRestaurant', component: AjoutRestaurantComponent},
   { path: '**', component: Error404Component }
 ];
