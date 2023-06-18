@@ -3,6 +3,6 @@
 
 <div class="grille">
   <ng-container *ngFor="let item of restaurants">
-    <app-carte [id]="item.id" [nom]="item.nom" [adresse]="item.adresse" [image]="item.image"></app-carte>
+    <app-carte [restaurant]="item"></app-carte>
   </ng-container>
 </div>

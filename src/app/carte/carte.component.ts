@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RestaurantsService } from "../restaurants.service";
+import {Restaurant} from "../models/restaurant.model";
 
 @Component({
   selector: 'app-carte',
@@ -6,32 +8,39 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./carte.component.css']
 })
 export class CarteComponent implements OnInit {
-  popularite!: number;
-  @Input() nom!: string;
-  @Input() adresse!: string;
-  @Input() image!: string;
-  @Input() id!: number;
+  @Input() restaurant!: Restaurant;
 
   liked!: boolean;
   class!: string;
 
+  constructor(private restaurantService: RestaurantsService) {
+  }
+
   ngOnInit(): void {
     this.liked = false;
     this.class = "like";
-    this.popularite = 0;
+    this.countLikes(this.restaurant.id);
   }
 
   onLike() {
     if (this.liked) {
-      // @ts-ignore
-      this.popularite--;
+      this.restaurant.popularite--;
       this.liked = false;
       this.class = "like";
     } else {
-      // @ts-ignore
-      this.popularite++;
+      this.restaurant.popularite++;
       this.liked = true;
       this.class = "unlike";
     }
+  }
+
+  countLikes(id: number) {
+    this.restaurantService.countLikes(id)
+      .subscribe(data => {
+          this.restaurant.popularite = data;
+        },
+        (err) => {
+          console.log(err);
+        });
   }
 }

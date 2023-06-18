@@ -58,7 +58,6 @@ export class ConnexionComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           if (data['message'] === "Email ou mot de passe incorrect") {
             alert(data['message'])
           } else if (data['message'] === "OK") {

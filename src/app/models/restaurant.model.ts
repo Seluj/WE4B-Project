@@ -6,7 +6,6 @@ export class Restaurant {
                 public description: string,
                 public type: number,
                 public prix: number,
-                public type: number,
                 public user_id: number,
                 public popularite: number,
                 public date_edit?: string,

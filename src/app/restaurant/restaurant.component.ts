@@ -9,24 +9,11 @@ import { RestaurantsService } from "../restaurants.service";
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
-  restaurant: Restaurant = {
-    id: 0,
-    nom: '',
-    adresse: '',
-    image: '',
-    description: '',
-    type: 0,
-    prix: 0,
-    user_id: 0,
-    date_edit: '',
-    popularite: 0,
-  };
+  restaurant!: Restaurant;
 
-  liked!: boolean;
   popularity!: number;
   id!: number;
   error = '';
-  success = '';
 
   constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService) {
   }
@@ -34,15 +21,15 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = params['id'];
-      this.countLikes(id);
-      this.getRestaurantById(id);
+      this.id = params['id'];
     });
+    this.countLikes(this.id);
+    this.getRestaurantById(this.id);
   }
 
-  countLikes(id: number): void {
+  countLikes(id: number) {
     this.restaurantService.countLikes(id)
-      .subscribe((data: any) => {
+      .subscribe(data => {
           this.popularity = data;
         },
         (err) => {
@@ -51,27 +38,30 @@ export class RestaurantComponent implements OnInit {
         });
   }
 
-  getRestaurantById(id : number): void {
-    this.restaurantService.getRestaurantById(id).subscribe((data: any) => {
-        if (data) {
-          this.restaurant = {
-            id: data.id,
-            nom: data.nom,
-            adresse: data.adresse,
-            image: data.image,
-            description: data.description,
-            type: data.type,
-            prix: data.prix,
-            user_id: data.user_id,
-            popularite: this.popularity,
-            date_edit: data.date_edit
-          };
-        }
+  getRestaurantById(id : number) : void {
+    this.restaurantService.getRestaurantById(id)
+      .subscribe(data => {
+
+        this.restaurant = new Restaurant(
+          data['id'],
+          data['nom'],
+          data['adresse'],
+          data['image'],
+          data['description'],
+          data['type'],
+          data['prix'],
+          data['user_id'],
+          this.popularity
+        );
+
       },
       (err) => {
         console.log(err);
         this.error = 'Failed to get restaurant details.';
       }
     );
+  }
+  print() {
+    console.log(this.restaurant);
   }
 }

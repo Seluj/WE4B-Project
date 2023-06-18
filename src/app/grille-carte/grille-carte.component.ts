@@ -48,7 +48,8 @@ export class GrilleCarteComponent implements OnInit {
           this.restaurants[i].description = data[i].description;
           this.restaurants[i].prix = data[i].prix;
           this.restaurants[i].user_id = data[i].user_id;
-          this.restaurants[i].popularite = data[i].popularite;
+          this.countLikes(this.restaurants[i].id);
+          this.restaurants[i].popularite = this.popularity;
         }
         this.restaurants = data;
       },
@@ -80,5 +81,16 @@ export class GrilleCarteComponent implements OnInit {
       }
     );
   }
-  
+
+  countLikes(id: number) {
+    this.restaurantService.countLikes(id)
+      .subscribe(data => {
+          this.popularity = data;
+        },
+        (err) => {
+          console.log(err);
+          this.error = 'Failed to get restaurant details.';
+        });
+  }
+
 }
