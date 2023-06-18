@@ -1,37 +1,125 @@
 <div class="dashboard">
 
   <!-- Div contenant les données de l'utilisateur : affiche son compte, et son restaurant dans le cas d'un restaurateur -->
-  <div class="affichage">
+  <div class="affichage_modification affichage">
 
-    <!-- Div affichant le compte de l'utilisateur -->
-    <div class="utilisateur">
+    <h1>Mon compte</h1>
 
-      <h1>Mon compte</h1>
-
-      <ng-container *ngIf="restaurateur; else afficherUtilisateur">
-        <app-restaurateur [restaurateur]="restaurateur"></app-restaurateur>
-      </ng-container>
-      <ng-template #afficherUtilisateur>
-        <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
-      </ng-template>
-    </div>
-
-    <!-- S'il s'agit d'un restaurateur, on affiche son restaurant -->
-    <ng-template *ngIf="restaurateur">
-
+    <ng-container *ngIf="restaurateur; else afficherUtilisateur">
+      <app-restaurateur [restaurateur]="restaurateur"></app-restaurateur>
+      <h1>Mon restaurant</h1>
       <div class="restaurant">
-        <app-carte [carte]="carte"></app-carte>
+        <app-carte [nom]="nom" [adresse]="adresse" [image]="image"></app-carte>
       </div>
 
+    </ng-container>
+    <ng-template #afficherUtilisateur>
+      <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
     </ng-template>
 
   </div>
 
   <!-- Div permettant à l'utilisateur de modifier son compte, et son restaurant s'il s'agit d'un restaurateur -->
-  <div class="modification">
+  <div class="affichage_modification">
+
     <div class="compte">
 
+      <form class="card-form" [formGroup]="inscription.inscriptionForm" (ngSubmit)="inscription.onInscriptionForm()">
+        <!-- Gestion du nom -->
+        <div class="input">
+          <input type="text" class="input-field" formControlName="nom" required/>
+          <label class="input-label">Nom</label>
+        </div>
+        <div class="error"
+             *ngIf="inscription.inscriptionForm.controls.nom?.invalid && (inscription.inscriptionForm.controls.nom?.dirty || inscription.inscriptionForm.controls.nom?.touched)">
+          <div *ngIf="inscription.inscriptionForm.controls.nom?.errors?.['required']">
+            Le nom est requis.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.nom?.errors?.['pattern']">
+            Le nom ne doit contenir que des lettres.
+          </div>
+        </div>
+
+        <div class="input">
+          <input type="text" class="input-field" formControlName="prenom" required/>
+          <label class="input-label">Prenom</label>
+        </div>
+        <div class="error"
+             *ngIf="inscription.inscriptionForm.controls.prenom?.invalid && (inscription.inscriptionForm.controls.prenom?.dirty || inscription.inscriptionForm.controls.prenom?.touched)">
+          <div *ngIf="inscription.inscriptionForm.controls.prenom?.errors?.['required']">
+            Le prénom est requis.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.prenom?.errors?.['pattern']">
+            Le prénom ne doit contenir que des lettres.
+          </div>
+        </div>
+
+        <!-- Gestion de l'email -->
+        <div class="input">
+          <input type="text" class="input-field" formControlName="email" required/>
+          <label class="input-label">Email</label>
+        </div>
+        <div class="error"
+             *ngIf="inscription.inscriptionForm.controls.email?.invalid && (inscription.inscriptionForm.controls.email?.dirty || inscription.inscriptionForm.controls.email?.touched)">
+          <div *ngIf="inscription.inscriptionForm.controls.email?.errors?.['required']">
+            L'email est requis.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.email?.hasError('hasAt'); else elseBlock">
+            L'email doit contenir un @.
+          </div>
+          <ng-template #elseBlock>
+            <div *ngIf="inscription.inscriptionForm.controls.email?.errors?.['pattern']">
+              L'email n'est pas valide.
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Gestion du mot de passe -->
+        <div class="input">
+          <input type="password" class="input-field" formControlName="mdp" required/>
+          <label class="input-label">Mot de passe</label>
+        </div>
+        <div class="error"
+             *ngIf="inscription.inscriptionForm.controls.mdp?.invalid && (inscription.inscriptionForm.controls.mdp?.dirty || inscription.inscriptionForm.controls.mdp?.touched)">
+          <div *ngIf="inscription.inscriptionForm.controls.mdp?.errors?.['required']">
+            Le mot de passe est requis.
+          </div>
+
+          <div *ngIf="inscription.inscriptionForm.controls.mdp?.errors?.['minlength']">
+            Le mot de passe doit contenir au moins 6 caractères.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.mdp?.hasError('hasNumber')">
+            Le mot de passe doit contenir au moins un chiffre.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.mdp?.hasError('hasCapitalCase')">
+            Le mot de passe doit contenir au moins une majuscule.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.mdp?.hasError('hasSmallCase')">
+            Le mot de passe doit contenir au moins une minuscule.
+          </div>
+          <div *ngIf="inscription.inscriptionForm.controls.mdp?.hasError('hasSpecialCharacters')">
+            Le mot de passe doit contenir au moins un caractère spécial.
+          </div>
+        </div>
+
+        <!-- Gestion de la confirmation du mot de passe -->
+        <div class="mdpConfirm">
+          <input type="password" class="input-field" formControlName="mdp2" required/>
+          <label class="input-label">Confirmation</label>
+        </div>
+        <div class="error"
+             *ngIf="inscription.inscriptionForm.controls.mdp2?.invalid && (inscription.inscriptionForm.controls.mdp2?.dirty || inscription.inscriptionForm.controls.mdp2?.touched)">
+          <div *ngIf="inscription.inscriptionForm.controls.mdp2.hasError('matching')">
+            Les mots de passe ne correspondent pas.
+          </div>
+        </div>
+      </form>
     </div>
+
+
+
+
+
     <ng-template *ngIf="restaurateur">
 
       <!-- Si le restaurateur a déjà saisi un restaurant, on lui propose de modifier ses données -->
@@ -69,9 +157,7 @@
 
       <!-- Si le restaurateur n'a pas de restaurant, on lui propose d'en saisir un -->
       <ng-template #creer_restaurant>
-        <div class="creer_restaurant">
-
-        </div>
+        <!-- <app-ajout-restaurant [restaurateur]="restaurateur"></app-ajout-restaurant> -->
       </ng-template>
     </ng-template>
 
