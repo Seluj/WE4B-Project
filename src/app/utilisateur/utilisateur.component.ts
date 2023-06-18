@@ -6,6 +6,12 @@ import { Utilisateur } from "../models/utilisateur.model";
   templateUrl: './utilisateur.component.html',
   styleUrls: ['./utilisateur.component.css']
 })
-export class UtilisateurComponent {
+export class UtilisateurComponent implements OnInit {
   @Input() utilisateur!: Utilisateur;
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
 }
