@@ -97,5 +97,32 @@ h1 {
   transform: translateY(-1.5rem);
 }
 
+.error {
+  color: rgb(83, 24, 29);
+  font-size: .875rem;
+  margin-top: .25rem;
+}
+
+.error {
+  color: rgb(83, 24, 29);
+  font-size: .875rem;
+  margin-top: .25rem;
+}
+
+.action-button {
+  font: inherit;
+  font-size: 1.25rem;
+  padding: 1em;
+  width: 100%;
+  font-weight: 500;
+  background-color: #d4945a;
+  border-radius: 6px;
+  color: #000000;
+  border: 0;
+}
+
+.action-button:focus {
+  outline: 0;
+}
 
 
