@@ -16,7 +16,9 @@ export class RestaurantComponent implements OnInit {
     image: '',
     description: '',
     prix: 0,
+    user_id: 0,
     date_edit: '',
+    popularite: 0,
   };
 
   liked!: boolean;
