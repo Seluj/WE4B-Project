@@ -18,8 +18,9 @@
 
 /* Utilisé pour alligner le texte à gauche */
 .text-left {
-  text-align: left;
+  text-align: justify;
   padding-left: 50px;
+  padding-right: 50px;
 }
 
 .image-container {
