@@ -2,6 +2,65 @@
   background-color: #18534F;
 }
 
+.navbar ul {
+  float: right;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  color: white;
+}
+
+.navbar ul li {
+  float: left;
+  position: relative;
+}
+
+.navbar ul li a i.fa.fa-chevron-down {
+  font-size: 0.8em;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 23px;
+  font-size: 1.1em;
+  margin: 0px;
+}
+
+.navbar ul li a:hover {
+  background: #226D68;
+  transition: .5s;
+}
+
+.navbar ul li ul {
+  position: absolute;
+  top: 73px;
+  right: 0px;
+  width: 180px;
+  display: none;
+  z-index: 88888;
+  background: #18534F;
+}
+
+.navbar ul li:hover ul {
+  display: block;
+}
+
+.navbar ul li ul li {
+  width: 100%;
+  text-align: center;
+  background: #D6955B;
+}
+
+.navbar ul li ul li:hover {
+  background: #FEEAA1;
+  text-color: black;
+}
+
+.navbar ul li ul li button {
+  padding: 10px;
+  transition: .5s;
+}
+
 img {
   margin-left: 10px;
   margin-right: 10px;
@@ -17,6 +76,16 @@ img {
   font-weight: bold;
 }
 
+.deconnexion {
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .connexion:hover {
   color: #d6955b;
 }
+
