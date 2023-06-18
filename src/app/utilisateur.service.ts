@@ -19,15 +19,15 @@ export class UtilisateurService implements OnInit {
   public inscription(data: Utilisateur) {
     return this.http.post(`${this.baseUrl}/inscription.php`, {data: data})
       .pipe(map((res: any) => {
-        return res['data'];
+        return res;
       }));
   }
 
   public connexion(data: Utilisateur) {
     return this.http.post(`${this.baseUrl}/connexion.php`, {data: data})
       .pipe(map((res: any) => {
-        return res['data'];
-      }))
+        return res;
+      }));
   }
 
   setSessionItem(name: string, value: string): void {

@@ -93,17 +93,23 @@ export class InscriptionComponent implements OnInit {
       restaurateur,
     );
 
-
     console.log(this.inscriptionForm.value);
 
     this.inscription.inscription(this.utilisateur)
       .pipe(first())
       .subscribe(data => {
-        console.log("Success");
-        this.inscriptionForm.reset();
-      },
+          if (data === "Email déjà utilisé") {
+            alert("Email déjà utilisé");
+          } else {
+            alert("Inscription réussie, vous pouvez maintenant vous connecter");
+            console.log("Success");
+            this.inscriptionForm.reset();
+          }
+
+        },
         error => {
-        console.log(error);
-        });
+          console.log(error);
+        }
+      );
   }
 }

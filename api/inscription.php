@@ -19,19 +19,33 @@ if (isset($postData) && !empty($postData)) {
   $mdp = trim($request->data->mdp);
   $restaurateur = trim($request->data->restaurateur);
 
+  //$mdp = password_hash($mdp, PASSWORD_DEFAULT);
+
+  $sqlRequest = "SELECT * FROM `utilisateurs` WHERE `mail` = '$email'";
+
   $sql = "INSERT INTO `utilisateurs` (`id`, `prenom`, `nom`, `mail`, `mdp`, `restaurateur`) VALUES (null, '{$prenom}','{$nom}','{$email}','{$mdp}', '{$restaurateur}')";
 
-  if ($conn->query($sql)) {
+  if ($result = mysqli_query($conn, $sqlRequest)) {
+    $i = 0;
 
-    $data = [
-      'prenom' => $prenom,
-      'nom' => $nom,
-      'mdp' => $mdp,
-      'email' => $email,
-      'restaurateur' => $restaurateur
-    ];
-    echo json_encode($data);
-  } else {
-    http_response_code(422);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $i++;
+    }
+    if ($i != 0) {
+      echo json_encode("Email déjà utilisé");
+    } else {
+      if ($conn->query($sql)) {
+        $data = [
+          'prenom' => $prenom,
+          'nom' => $nom,
+          'mdp' => $mdp,
+          'email' => $email,
+          'restaurateur' => $restaurateur
+        ];
+        echo json_encode($data);
+      } else {
+        http_response_code(422);
+      }
+    }
   }
 }
