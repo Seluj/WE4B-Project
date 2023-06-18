@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Restaurateur} from "../models/restaurateur.model";
 
 @Component({
   selector: 'app-ajout-restaurant',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./ajout-restaurant.component.css']
 })
 export class AjoutRestaurantComponent {
-
+  @Input() ajoutRestaurant!: Restaurateur;
 }
