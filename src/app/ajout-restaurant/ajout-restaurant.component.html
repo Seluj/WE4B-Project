@@ -1,1 +1,70 @@
-<p>ajout-restaurant works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-image">
+    </div>
+    <form class="card-form" [formGroup]="restaurantForm" (ngSubmit)="onRestaurantForm()">
+
+      <div class="input">
+        <input type="text" class="input-field" formControlName="nom" required/>
+        <label class="input-label">Nom</label>
+      </div>
+      <div class="error"
+           *ngIf="restaurantForm.controls.nom?.invalid && (restaurantForm.controls.nom?.dirty || restaurantForm.controls.nom?.touched)">
+        <div *ngIf="restaurantForm.controls.nom?.errors?.['required']">
+          Le nom est requis.
+        </div>
+        <div *ngIf="restaurantForm.controls.nom?.errors?.['pattern']">
+          Le nom ne doit contenir que des lettres.
+        </div>
+      </div>
+
+      <div class="input">
+        <input type="text" class="input-field" formControlName="adresse" required/>
+        <label class="input-label">Adresse</label>
+      </div>
+      <div class="error"
+           *ngIf="restaurantForm.controls.adresse?.invalid && (restaurantForm.controls.adresse?.dirty || restaurantForm.controls.adresse?.touched)">
+        <div *ngIf="restaurantForm.controls.adresse?.errors?.['required']">
+          L'adresse est requise.
+        </div>
+      </div>
+
+      <div class="input">
+        <input type="text" class="input-field" formControlName="image" required/>
+        <label class="input-label">Image</label>
+      </div>
+      <div class="error"
+           *ngIf="restaurantForm.controls.image?.invalid && (restaurantForm.controls.image?.dirty || restaurantForm.controls.image?.touched)">
+        <div *ngIf="restaurantForm.controls.image?.errors?.['required']">
+          L'image est requise.
+        </div>
+      </div>
+
+      <div class="input">
+        <input type="file" class="input-field" formControlName="description" required/>
+        <label class="input-label">Description</label>
+      </div>
+      <div class="error"
+           *ngIf="restaurantForm.controls.description?.invalid && (restaurantForm.controls.description?.dirty || restaurantForm.controls.description?.touched)">
+        <div *ngIf="restaurantForm.controls.description?.errors?.['required']">
+          Le mot de passe est requis.
+        </div>
+      </div>
+
+      <div class="mdpConfirm">
+        <input type="password" class="input-field" formControlName="prix" required/>
+        <label class="input-label">Prix</label>
+      </div>
+      <div class="error"
+           *ngIf="restaurantForm.controls.prix?.invalid && (restaurantForm.controls.prix?.dirty || restaurantForm.controls.prix?.touched)">
+        <div *ngIf="restaurantForm.controls.prix.errors?.['required']">
+          Les mots de passe ne correspondent pas.
+        </div>
+      </div>
+
+      <div class="action">
+        <button class="action-button" [disabled]="restaurantForm.invalid">Inscription</button>
+      </div>
+    </form>
+  </div>
+</div>
