@@ -1,5 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {Restaurateur} from "../models/restaurateur.model";
+import { Component, Input } from '@angular/core';
+import { Restaurant } from "../models/restaurant.model";
+import { FormGroup } from "@angular/forms";
+import { Utilisateur } from "../models/utilisateur.model";
 
 @Component({
   selector: 'app-ajout-restaurant',
@@ -7,5 +9,10 @@ import {Restaurateur} from "../models/restaurateur.model";
   styleUrls: ['./ajout-restaurant.component.css']
 })
 export class AjoutRestaurantComponent {
-  @Input() ajoutRestaurant!: Restaurateur;
+  @Input() utilisateur!: Utilisateur;
+  restaurant!: Restaurant;
+
+  restaurantForm = new FormGroup({
+
+  })
 }

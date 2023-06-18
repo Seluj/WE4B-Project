@@ -1,12 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Utilisateur} from "../models/utilisateur.model";
-import {Restaurateur} from "../models/restaurateur.model";
-import {Restaurant} from "../models/restaurant.model";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CustomValidators} from "../custom-validators";
-import {UtilisateurService} from "../utilisateur.service";
-import {first} from "rxjs";
-import {InscriptionComponent} from "../inscription/inscription.component";
+import { Component, OnInit } from '@angular/core';
+import { Utilisateur } from "../models/utilisateur.model";
+import { Restaurant } from "../models/restaurant.model";
+import { UtilisateurService } from "../utilisateur.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,24 +11,36 @@ import {InscriptionComponent} from "../inscription/inscription.component";
 })
 export class DashboardComponent implements OnInit {
 
-  inscription!: InscriptionComponent
-  service!: UtilisateurService;
+
   utilisateur!: Utilisateur;
-  restaurateur!: Restaurateur;
-  nom!: string;
-  adresse!: string;
-  image!: string;
   restaurant!: Restaurant;
+  restaurateurTest!: boolean;
+
+  constructor(public serviceUtilisateur: UtilisateurService, private router: Router) {
+  }
 
   ngOnInit(): void {
-    //this.service.estConnecte();
+    this.restaurateurTest = false;
+    // On regarde si l'utilisateur est connecté
+    if (this.serviceUtilisateur.estConnecte()) {
 
-    this.utilisateur = new Utilisateur("Michel","Schmürz","SchmurzMichMich@gmail.com","mdp", 0);
-    this.restaurateur = new Restaurateur("Bernard","LaMouette","bernardmoumou@gmail.com","mdp", 1);
-    this.restaurant = new Restaurant(1,"BOB", "5 rue du BOB", "../../assets/restaurant_belfort.jpg", "wow trop bien BOB", 0, 0, 0);
-    this.nom = "Restaurant Belfort";
-    this.adresse = "90000 Belfort, France";
-    this.image = "../../assets/restaurant_belfort.jpg";
+      // On regarde si l'utilisateur est restaurateur
+      if (this.serviceUtilisateur.estRestaurateur()) {
+        this.restaurateurTest = true;
+      }
+
+      this.utilisateur = new Utilisateur(
+        parseInt(<string>this.serviceUtilisateur.getSessionItem("id")),
+        <string>this.serviceUtilisateur.getSessionItem("prenom"),
+        <string>this.serviceUtilisateur.getSessionItem("nom"),
+        <string>this.serviceUtilisateur.getSessionItem("email"),
+        <string>this.serviceUtilisateur.getSessionItem("mdp"),
+        parseInt(<string>this.serviceUtilisateur.getSessionItem("restaurateur")),
+      );
+    } else {
+      this.router.navigate(['/']);
+    }
+
   }
 
 }

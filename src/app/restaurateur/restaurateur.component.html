@@ -1,5 +1,7 @@
 <div class="donnees">
-  <p>Prénom : {{ restaurateur.prenom }}</p>
-  <p>Nom : {{ restaurateur.nom }}</p>
-  <p>Email : {{ restaurateur.email }}</p>
+  <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
+</div>
+<h1>Mon restaurant</h1>
+<div class="restaurant">
+  <app-carte [nom]="restaurant.nom" [adresse]="restaurant.adresse" [image]="restaurant.image" [id]="restaurant.id"></app-carte>
 </div>
