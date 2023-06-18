@@ -33,8 +33,20 @@ export class RestaurantComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = params['id'];
+      this.countLikes(id);
       this.getRestaurantById(id);
     });
+  }
+
+  countLikes(id: number): void {
+    this.restaurantService.countLikes(id)
+      .subscribe((data: any) => {
+          this.popularity = data;
+        },
+        (err) => {
+          console.log(err);
+          this.error = 'Failed to get restaurant details.';
+        });
   }
 
   getRestaurantById(id : number): void {

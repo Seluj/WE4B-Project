@@ -46,5 +46,20 @@ export class RestaurantsService implements OnInit {
     );
   }
 
+  public getRestaurantByRestaurateur(id: number) {
+    return this.http.get(`${this.baseUrl}/getRestaurantByRestaurateur.php`, { params: { id: id.toString() } }).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
+
+  public countLikes(id_restaurant: number) {
+    return this.http.get(`${this.baseUrl}/countLikes.php`, { params: { id_restaurant: id_restaurant.toString() } }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 
 }
