@@ -30,7 +30,7 @@
       </div>
 
       <div class="input">
-        <input type="text" class="input-field" formControlName="image" required/>
+        <input type="file" class="input-field" formControlName="image" required/>
         <label class="input-label">Image</label>
       </div>
       <div class="error"
@@ -41,7 +41,7 @@
       </div>
 
       <div class="input">
-        <input type="file" class="input-field" formControlName="description" required/>
+        <input type="text" class="input-field" formControlName="description" required/>
         <label class="input-label">Description</label>
       </div>
       <div class="error"
@@ -51,14 +51,33 @@
         </div>
       </div>
 
-      <div class="mdpConfirm">
-        <input type="password" class="input-field" formControlName="prix" required/>
+      <div class="input">
+        <select class="input-field" formControlName="prix" required>
+          <option value="1">€</option>
+          <option value="2">€€</option>
+          <option value="3">€€€</option>
+        </select>
         <label class="input-label">Prix</label>
       </div>
       <div class="error"
            *ngIf="restaurantForm.controls.prix?.invalid && (restaurantForm.controls.prix?.dirty || restaurantForm.controls.prix?.touched)">
         <div *ngIf="restaurantForm.controls.prix.errors?.['required']">
-          Les mots de passe ne correspondent pas.
+          Le prix est requis.
+        </div>
+      </div>
+
+      <div class="input">
+        <select class="input-field" formControlName="type" required>
+          <option value="1">Fast Food</option>
+          <option value="2">Familial</option>
+          <option value="3">Romantique</option>
+        </select>
+        <label class="input-label">Type de Restaurant</label>
+      </div>
+      <div class="error"
+           *ngIf="restaurantForm.controls.type?.invalid && (restaurantForm.controls.type?.dirty || restaurantForm.controls.type?.touched)">
+        <div *ngIf="restaurantForm.controls.type.errors?.['required']">
+          Le type de restaurent est requis.
         </div>
       </div>
 
