@@ -8,7 +8,9 @@ import {Restaurant} from "./models/restaurant.model";
 })
 export class RestaurantsService implements OnInit {
   baseUrl = 'http://79.80.238.57:34229/WE4B-Project/api';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
   }
