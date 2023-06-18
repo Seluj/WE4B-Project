@@ -30,3 +30,7 @@ button {
   /*border: solid 1px purple;*/
   padding: 0 5px;
 }
+
+.nom-hover:hover {
+  color: #d6955b;
+}
