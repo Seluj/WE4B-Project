@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-recherche.component.css']
 })
 export class PageRechercheComponent {
+  fixedMode : string = 'recherche';
+
+  constructor() { }
 
 }
