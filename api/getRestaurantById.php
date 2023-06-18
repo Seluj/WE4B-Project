@@ -3,34 +3,18 @@
 require 'databaseFunctions.php';
 $conn = connectDatabase();
 
-if (isset($_GET['id'])) {
-  try {
-    $id = $_GET['id'];
-    $stmt = $conn->prepare("SELECT `nom`, `adresse`, `image`, `description`, `prix`, `date_edit` FROM `restaurants` WHERE `id` = :id");
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+$id = ($_GET['id'] !== null && (int)$_GET['id'] > 0) ? mysqli_real_escape_string($conn, (int)$_GET['id']) : false;
 
-    if ($result) {
-      $data = [
-        'data' => $result,
-      ];
-      echo json_encode($data);
-    } else {
-      $data = [
-        'error' => 'No restaurant found with the provided ID',
-      ];
-      echo json_encode($data);
-    }
-  } catch (PDOException $e) {
-    $data = [
-      'error' => $e->getMessage(),
-    ];
-    echo json_encode($data);
-  }
-} else {
-  $data = [
-    'error' => 'No ID provided',
-  ];
-  echo json_encode($data);
+if (!$id) {
+  return http_response_code(400);
 }
+
+$sql = "SELECT `nom`, `adresse`, `image`, `description`, `prix`, `date_edit` FROM `restaurants` WHERE `id` = '{$id}'";
+
+if(mysqli_query($conn, $sql)) {
+  $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+  echo json_encode(['data' => $row]);
+} else {
+  http_response_code(404);
+}
+

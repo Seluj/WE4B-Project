@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {map} from "rxjs";
 import {Restaurant} from "./models/restaurant.model";
 
@@ -31,7 +31,9 @@ export class RestaurantsService implements OnInit {
   }
 
   public getRestaurantById(id: number) {
-    return this.http.get(`${this.baseUrl}/getRestaurantById.php?id=${id}`).pipe(
+    const params = new HttpParams()
+    .set('id', id.toString());
+    return this.http.get(`${this.baseUrl}/getRestaurantById.php`, { params: params }).pipe(
       map((res: any) => {
         return res['data'];
       })
