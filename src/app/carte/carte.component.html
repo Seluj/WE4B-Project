@@ -2,14 +2,14 @@
   <button [routerLink]="['restaurant', id]">
     <img src="../../assets/{{ image }}" alt="" class="carte-image">
   </button>
-    <div class="carte-info">
-      <a [routerLink]="['restaurant', id]"><h3 class = "nom-hover">{{ nom }}</h3></a>
-      <h5>
-        <button (click)="onLike()" class="{{ class }}">
-          <i class="fa-solid fa-star"></i> {{ popularite }}
-        </button>
-      </h5>
-      <br>
-      <h5>{{ adresse }}</h5>
-    </div>
+  <div class="carte-info">
+    <a [routerLink]="['restaurant', id]"><h3 class="nom-hover">{{ nom }}</h3></a>
+    <h5>
+      <button (click)="onLike()" class="{{ class }}">
+        <i class="fa-solid fa-star"></i> {{ popularite }}
+      </button>
+    </h5>
+    <br>
+    <h5>{{ adresse }}</h5>
+  </div>
 </div>

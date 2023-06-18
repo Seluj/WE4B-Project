@@ -40,7 +40,7 @@ export class GrilleCarteComponent implements OnInit {
   getRestaurants(): void {
     this.restaurantService.getAllRestaurants().subscribe(
       (data: any) => {
-        for (let i = 0; i < data.size; i++) {
+        for (let i: number = 0; i < data.size; i++) {
           this.restaurants[i].id = data[i].id;
           this.restaurants[i].nom = data[i].nom;
           this.restaurants[i].adresse = data[i].adresse;
@@ -62,7 +62,7 @@ export class GrilleCarteComponent implements OnInit {
   searchRestaurants(cheap: boolean, moderate: boolean, expensive: boolean, adresse: string, type1: boolean, type2: boolean, type3: boolean): void {
     this.restaurantService.searchRestaurants(cheap, moderate, expensive, adresse, type1, type2, type3).subscribe(
       (data: any) => {
-        for (let i = 0; i < data.size; i++) {
+        for (let i: number = 0; i < data.size; i++) {
             this.restaurants[i].id = data[i].id;
             this.restaurants[i].nom = data[i].nom;
             this.restaurants[i].adresse = data[i].adresse;

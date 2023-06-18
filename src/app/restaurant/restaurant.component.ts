@@ -25,7 +25,7 @@ export class RestaurantComponent implements OnInit {
 
   liked!: boolean;
   popularity!: number;
-
+  id!: number;
   error = '';
   success = '';
 

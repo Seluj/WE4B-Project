@@ -36,13 +36,14 @@ export class BarRechercheComponent {
     }
   };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
 
   rechercheRestaurant() {
-    const { cheap, moderate, expensive } = this.searchCriteria.prix;
-    const { type1, type2, type3 } = this.searchCriteria.type;
-    const { adresse } = this.searchCriteria;
+    const {cheap, moderate, expensive} = this.searchCriteria.prix;
+    const {type1, type2, type3} = this.searchCriteria.type;
+    const {adresse} = this.searchCriteria;
 
     this.router.navigate(['recherche',
       cheap.toString(),

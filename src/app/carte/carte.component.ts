@@ -23,10 +23,12 @@ export class CarteComponent implements OnInit {
 
   onLike() {
     if (this.liked) {
+      // @ts-ignore
       this.popularite--;
       this.liked = false;
       this.class = "like";
     } else {
+      // @ts-ignore
       this.popularite++;
       this.liked = true;
       this.class = "unlike";

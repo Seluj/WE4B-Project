@@ -1,27 +1,27 @@
 .restaurant-form {
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .restaurant-label {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.restaurant-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .restaurant-checkbox-group {
   margin-bottom: 10px;
 }
-  
-  .restaurant-checkbox {
-    margin-right: 20px;
-    display: inline-block;
-  }
+
+.restaurant-checkbox {
+  margin-right: 20px;
+  display: inline-block;
+}
 
 .restaurant-button {
-    background-color: #18534F;
-    border-color: #18534F;
+  background-color: #18534F;
+  border-color: #18534F;
 }
   
   
