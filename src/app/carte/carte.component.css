@@ -25,7 +25,7 @@ button {
   border-top-right-radius: 5px;
   object-fit: cover;
 }
-.carte .carte-info {
+.carte-info {
   height: 130px;
   /*border: solid 1px purple;*/
   padding: 0 5px;
