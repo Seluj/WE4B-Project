@@ -6,7 +6,7 @@
     <a [routerLink]="['restaurant', restaurant.id]"><h3 class="nom-hover">{{ restaurant.nom }}</h3></a>
     <h5>
       <button (click)="onLike()" class="{{ class }}">
-        <i class="fa-solid fa-star"></i> 0
+        <i class="fa-solid fa-star"></i> {{ restaurant.popularite }}
       </button>
     </h5>
     <br>
