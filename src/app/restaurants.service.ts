@@ -59,7 +59,6 @@ export class RestaurantsService implements OnInit {
   public countLikes(id_restaurant: number) {
     return this.http.get(`${this.baseUrl}/countLikes.php`, { params: { id_restaurant: id_restaurant.toString() } }).pipe(
       map((res: any) => {
-        console.log(res['count(id)']);
         return res['count(id)'];
       })
     );
@@ -67,6 +66,30 @@ export class RestaurantsService implements OnInit {
 
   createRestaurant(data: Restaurant) {
     return this.http.post(`${this.baseUrl}/createRestaurant.php`, { data: data }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  addLike(restau_id: number, user_id: number) {
+    return this.http.post(`${this.baseUrl}/addLike.php`, { restau_id: restau_id, user_id: user_id  }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  getLike(restau_id: number, user_id: number) {
+    return this.http.get(`${this.baseUrl}/getLike.php`, { params: { restau_id: restau_id, user_id: user_id } }).pipe(
+      map((res: any) => {
+        return res['count(id)'];
+      })
+    );
+  }
+
+  removeLike(restau_id: number, user_id: number) {
+    return this.http.post(`${this.baseUrl}/removeLike.php`, { restau_id: restau_id, user_id: user_id }).pipe(
       map((res: any) => {
         return res;
       })
