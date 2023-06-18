@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RestaurantsService } from "../restaurants.service";
 
 @Component({
   selector: 'app-carte',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./carte.component.css']
 })
 export class CarteComponent implements OnInit {
-  popularite!: number;
+  @Input() popularite!: number;
   @Input() nom!: string;
   @Input() adresse!: string;
   @Input() image!: string;
@@ -15,10 +16,12 @@ export class CarteComponent implements OnInit {
   liked!: boolean;
   class!: string;
 
+  constructor(private restaurantService: RestaurantsService) {
+  }
+
   ngOnInit(): void {
     this.liked = false;
     this.class = "like";
-    this.popularite = 0;
   }
 
   onLike() {

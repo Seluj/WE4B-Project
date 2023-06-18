@@ -59,7 +59,8 @@ export class RestaurantsService implements OnInit {
   public countLikes(id_restaurant: number) {
     return this.http.get(`${this.baseUrl}/countLikes.php`, { params: { id_restaurant: id_restaurant.toString() } }).pipe(
       map((res: any) => {
-        return res;
+        console.log(res['count(id)']);
+        return res['count(id)'];
       })
     );
   }

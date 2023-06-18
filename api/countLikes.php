@@ -3,7 +3,7 @@
 require 'databaseFunctions.php';
 $conn = connectDatabase();
 
-$id = ($_GET['id'] !== null && (int)$_GET['id'] > 0) ? mysqli_real_escape_string($conn, (int)$_GET['id']) : false;
+$id = ($_GET['id_restaurant'] !== null && (int)$_GET['id_restaurant'] > 0) ? mysqli_real_escape_string($conn, (int)$_GET['id_restaurant']) : false;
 
 if (!$id) {
   http_response_code(400);
