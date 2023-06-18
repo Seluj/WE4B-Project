@@ -1,9 +1,9 @@
 <div class="carte">
-  <button [routerLink]="['restaurant', restaurant.id]">
+  <button [routerLink]="['/restaurant', restaurant.id]">
     <img src="../../assets/{{ restaurant.image }}" alt="" class="carte-image">
   </button>
   <div class="carte-info">
-    <a [routerLink]="['restaurant', restaurant.id]"><h3 class="nom-hover">{{ restaurant.nom }}</h3></a>
+    <a [routerLink]="['/restaurant', restaurant.id]"><h3 class="nom-hover">{{ restaurant.nom }}</h3></a>
     <h5>
       <button (click)="onLike()" class="{{ class }}">
         <i class="fa-solid fa-star"></i> {{ restaurant.popularite }}
