@@ -7,6 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 To run this angular project you must first upload our database to your `phpMyAdmin`. You must also modify the `api/config.php` file so as to input the data corresponding to your database. You must also change the baseUrl string in the `.service files` and replace them by `http://localhost/`.
 Keep in mind we use 8.2 php version. Also before you launch the app make sure to run `npm install`.
 
+Also it's important to know that the creation of a restaurant doesn't work properly yet, we are facing an issue with uploading the images. It should be fixed soon and pushed to our git.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
