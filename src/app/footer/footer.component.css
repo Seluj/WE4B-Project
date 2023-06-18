@@ -3,37 +3,38 @@
   color: white;
   padding: 40px 0;
 }
-  
+
 .footer-content {
   margin-bottom: 20px;
 }
-  
+
 .footer-heading {
   color: #d6955b;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-  
+
 .footer-text {
   font-size: 14px;
   margin-bottom: 0;
 }
-  
+
 .footer-logo {
   text-align: right;
 }
-  
+
 .footer-logo img {
   max-width: 100px;
   height: auto;
   flex-shrink: 0;
   align-self: flex-end;
 }
-  
+
 .footer-slogan {
+  padding: 10px 0;
   margin-top: 20px;
   text-align: center;
   background-color: hsl(177, 54%, 15%);
+  border-radius: 10px;
 }
-  
