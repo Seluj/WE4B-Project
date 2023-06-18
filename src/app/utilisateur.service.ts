@@ -7,7 +7,7 @@ import { Utilisateur } from "./models/utilisateur.model";
   providedIn: 'root'
 })
 export class UtilisateurService implements OnInit {
-  baseUrl: string = 'http://localhost/WE4B-Project/api';
+  baseUrl: string = 'http://79.80.238.57:34229/WE4B-Project/api';
 
   constructor(private http: HttpClient) {
 
