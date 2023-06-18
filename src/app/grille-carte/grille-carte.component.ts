@@ -29,6 +29,7 @@ export class GrilleCarteComponent implements OnInit {
         const type1 = params['type1'];
         const type2 = params['type2'];
         const type3 = params['type3'];
+
         this.searchRestaurants(cheap, moderate, expensive, adresse, type1, type2, type3);
       });
     } else {
@@ -58,7 +59,7 @@ export class GrilleCarteComponent implements OnInit {
     );
   }
 
-  searchRestaurants(cheap: boolean, moderate: boolean, expensive: boolean, adresse: Text, type1: boolean, type2: boolean, type3: boolean): void {
+  searchRestaurants(cheap: boolean, moderate: boolean, expensive: boolean, adresse: string, type1: boolean, type2: boolean, type3: boolean): void {
     this.restaurantService.searchRestaurants(cheap, moderate, expensive, adresse, type1, type2, type3).subscribe(
       (data: any) => {
         for (let i = 0; i < data.size; i++) {

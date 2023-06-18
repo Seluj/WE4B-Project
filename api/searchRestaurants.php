@@ -12,7 +12,7 @@ $type2 = isset($_GET['type2']) ? $_GET['type2'] : false;
 $type3 = isset($_GET['type3']) ? $_GET['type3'] : false;
 
 $restaurants = [];
-$sql = "SELECT * FROM 'restaurants' WHERE";
+$sql = "SELECT * FROM restaurants WHERE";
 
 $conditions = [];
 
@@ -29,7 +29,7 @@ if ($expensive) {
 }
 
 if ($adresse !== '') {
-  $conditions[] = "adresse LIKE '%$adresse%'";
+  $conditions[] = "adresse LIKE '%{$adresse}%'";
 }
 
 if ($type1) {
