@@ -1,3 +1,7 @@
+.card-title {
+  margin: 20px 0 30px 0;
+}
+
 /* Gère le style pour la popularité du restaurant*/
 .popularity {
   display: flex;
