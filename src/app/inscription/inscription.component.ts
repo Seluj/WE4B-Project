@@ -85,6 +85,7 @@ export class InscriptionComponent implements OnInit {
     }
 
     this.utilisateur = new Utilisateur(
+      0,
       <string>this.inscriptionForm.value.prenom,
       <string>this.inscriptionForm.value.nom,
       <string>this.inscriptionForm.value.email,
