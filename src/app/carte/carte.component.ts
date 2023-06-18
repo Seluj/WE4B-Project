@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RestaurantsService } from "../restaurants.service";
+import {Restaurant} from "../models/restaurant.model";
 
 @Component({
   selector: 'app-carte',
@@ -7,12 +8,8 @@ import { RestaurantsService } from "../restaurants.service";
   styleUrls: ['./carte.component.css']
 })
 export class CarteComponent implements OnInit {
-  @Input() popularite!: number;
-  @Input() nom!: string;
-  @Input() adresse!: string;
-  @Input() image!: string;
-  @Input() id!: number;
-
+  @Input() restaurant!: Restaurant;
+  popularite!: number;
   liked!: boolean;
   class!: string;
 
@@ -22,17 +19,19 @@ export class CarteComponent implements OnInit {
   ngOnInit(): void {
     this.liked = false;
     this.class = "like";
+
+    console.log(this.restaurant.popularite);
   }
 
   onLike() {
     if (this.liked) {
       // @ts-ignore
-      this.popularite--;
+      this.restaurant.popularite--;
       this.liked = false;
       this.class = "like";
     } else {
       // @ts-ignore
-      this.popularite++;
+      this.restaurant.popularite++;
       this.liked = true;
       this.class = "unlike";
     }
