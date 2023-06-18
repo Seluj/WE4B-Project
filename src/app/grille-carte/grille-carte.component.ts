@@ -62,21 +62,22 @@ export class GrilleCarteComponent implements OnInit {
     this.restaurantService.searchRestaurants(cheap, moderate, expensive, adresse, type1, type2, type3).subscribe(
       (data: any) => {
         for (let i = 0; i < data.size; i++) {
-          this.restaurants[i].id = data[i].id;
-          this.restaurants[i].nom = data[i].nom;
-          this.restaurants[i].adresse = data[i].adresse;
-          this.restaurants[i].image = data[i].image;
-          this.restaurants[i].description = data[i].description;
-          this.restaurants[i].prix = data[i].prix;
-          this.restaurants[i].user_id = data[i].user_id;
-          this.restaurants[i].popularite = data[i].popularite;
-        }
-        this.restaurants = data;
+            this.restaurants[i].id = data[i].id;
+            this.restaurants[i].nom = data[i].nom;
+            this.restaurants[i].adresse = data[i].adresse;
+            this.restaurants[i].image = data[i].image;
+            this.restaurants[i].description = data[i].description;
+            this.restaurants[i].prix = data[i].prix;
+            this.restaurants[i].user_id = data[i].user_id;
+            this.restaurants[i].popularite = data[i].popularite;
+          }
+          this.restaurants = data;
       },
       (err) => {
         console.log(err);
-        this.error = err;
+        this.error = "Erreur lors de la recherche des restaurants";
       }
     );
   }
+  
 }
