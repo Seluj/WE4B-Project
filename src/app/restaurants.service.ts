@@ -31,9 +31,7 @@ export class RestaurantsService implements OnInit {
   }
 
   public getRestaurantById(id: number) {
-    const params = new HttpParams()
-    .set('id', id.toString());
-    return this.http.get(`${this.baseUrl}/getRestaurantById.php`, { params: params }).pipe(
+    return this.http.get(`${this.baseUrl}/getRestaurantById.php`, { params: { id: id.toString() } }).pipe(
       map((res: any) => {
         return res['data'];
       })

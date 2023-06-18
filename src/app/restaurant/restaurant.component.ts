@@ -9,7 +9,16 @@ import {RestaurantsService} from "../restaurants.service";
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
-  @Input() restaurant!: Restaurant;
+  restaurant: Restaurant = {
+    id: 0,
+    nom: '',
+    adresse: '',
+    image: '',
+    description: '',
+    prix: 0,
+    date_edit: '',
+  };
+
   liked!: boolean;
   popularity!: number;
 
@@ -21,23 +30,24 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.restaurant.id = params['id'];
+      const id = params['id'];
+      this.getRestaurantById(id);
     });
-    this.getRestaurantById();
   }
 
-  getRestaurantById(): void {
-    this.restaurantService.getRestaurantById(this.restaurant.id).subscribe((data: any) => {
+  getRestaurantById(id : number): void {
+    this.restaurantService.getRestaurantById(id).subscribe((data: any) => {
         if (data) {
-          this.restaurant = new Restaurant(
-            data.nom,
-            data.adresse,
-            data.image,
-            data.description,
-            data.prix,
-            data.user_id,
-            data.date_edit
-          );
+          this.restaurant = {
+            id: data.id,
+            nom: data.nom,
+            adresse: data.adresse,
+            image: data.image,
+            description: data.description,
+            prix: data.prix,
+            user_id: data.user_id,
+            date_edit: data.date_edit
+          };
         }
       },
       (err) => {
