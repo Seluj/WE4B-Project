@@ -87,7 +87,6 @@ export class GrilleCarteComponent implements OnInit {
       .subscribe(data => {
           this.popularity = data;
         },
-
         (err) => {
           console.log(err);
           this.error = 'Failed to get restaurant details.';

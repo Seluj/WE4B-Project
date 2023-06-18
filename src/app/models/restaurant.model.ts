@@ -7,7 +7,7 @@ export class Restaurant {
                 public type: number,
                 public prix: number,
                 public user_id: number,
-                public popularite?: number,
+                public popularite: number,
                 public date_edit?: string,
                 ) {}
 }

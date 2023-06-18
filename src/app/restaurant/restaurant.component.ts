@@ -11,11 +11,9 @@ import { RestaurantsService } from "../restaurants.service";
 export class RestaurantComponent implements OnInit {
   restaurant!: Restaurant;
 
-  liked!: boolean;
   popularity!: number;
   id!: number;
   error = '';
-  success = '';
 
   constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService) {
   }
@@ -27,7 +25,6 @@ export class RestaurantComponent implements OnInit {
     });
     this.countLikes(this.id);
     this.getRestaurantById(this.id);
-    //console.log(this.popularity);
   }
 
   countLikes(id: number) {
@@ -44,8 +41,6 @@ export class RestaurantComponent implements OnInit {
   getRestaurantById(id : number) : void {
     this.restaurantService.getRestaurantById(id)
       .subscribe(data => {
-      //console.log("restaurant.component.ts");
-      //console.log(data);
 
         this.restaurant = new Restaurant(
           data['id'],

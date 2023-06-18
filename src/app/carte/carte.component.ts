@@ -9,7 +9,7 @@ import {Restaurant} from "../models/restaurant.model";
 })
 export class CarteComponent implements OnInit {
   @Input() restaurant!: Restaurant;
-  popularite!: number;
+
   liked!: boolean;
   class!: string;
 
@@ -19,21 +19,28 @@ export class CarteComponent implements OnInit {
   ngOnInit(): void {
     this.liked = false;
     this.class = "like";
-
-    console.log(this.restaurant.popularite);
+    this.countLikes(this.restaurant.id);
   }
 
   onLike() {
     if (this.liked) {
-      // @ts-ignore
       this.restaurant.popularite--;
       this.liked = false;
       this.class = "like";
     } else {
-      // @ts-ignore
       this.restaurant.popularite++;
       this.liked = true;
       this.class = "unlike";
     }
+  }
+
+  countLikes(id: number) {
+    this.restaurantService.countLikes(id)
+      .subscribe(data => {
+          this.restaurant.popularite = data;
+        },
+        (err) => {
+          console.log(err);
+        });
   }
 }
