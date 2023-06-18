@@ -3,6 +3,7 @@ import { Restaurant } from "../models/restaurant.model";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Utilisateur } from "../models/utilisateur.model";
 import { RestaurantsService } from "../restaurants.service";
+import {UtilisateurService} from "../utilisateur.service";
 
 @Component({
   selector: 'app-ajout-restaurant',
@@ -16,14 +17,13 @@ export class AjoutRestaurantComponent {
   restaurantForm = new FormGroup({
     nom: new FormControl('', [Validators.required]),
     adresse: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     prix: new FormControl('', [Validators.required]),
   })
 
 
-  constructor(private restaurantService: RestaurantsService) {
+  constructor(private restaurantService: RestaurantsService, private utilisateurService: UtilisateurService) {
   }
 
   onRestaurantForm() {
@@ -31,14 +31,15 @@ export class AjoutRestaurantComponent {
       0,
       <string>this.restaurantForm.value.nom,
       <string>this.restaurantForm.value.adresse,
-      <string>this.restaurantForm.value.image,
+      "nothing.jpeg",
       <string>this.restaurantForm.value.description,
-      parseInt(<string>this.restaurantForm.value.prix),
       parseInt(<string>this.restaurantForm.value.type),
-      this.utilisateur.id,
+      parseInt(<string>this.restaurantForm.value.prix),
+      parseInt(<string>this.utilisateurService.getSessionItem('id')),
       0,
       new Date().toString(),
     );
+    console.log(this.restaurant);
 
     this.restaurantService.addRestaurants(this.restaurant).subscribe(
       (data: any) => {

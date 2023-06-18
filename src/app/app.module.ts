@@ -21,6 +21,7 @@ import { FormsModule , ReactiveFormsModule} from "@angular/forms";
 import { FooterComponent } from './footer/footer.component';
 import { NgOptimizedImage } from "@angular/common";
 import { AjoutRestaurantComponent } from './ajout-restaurant/ajout-restaurant.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AjoutRestaurantComponent } from './ajout-restaurant/ajout-restaurant.co
     RestaurateurComponent,
     Error404Component,
     FooterComponent,
-    AjoutRestaurantComponent
+    AjoutRestaurantComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

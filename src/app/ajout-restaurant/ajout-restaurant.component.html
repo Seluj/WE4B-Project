@@ -30,17 +30,6 @@
       </div>
 
       <div class="input">
-        <input type="file" class="input-field" formControlName="image" required/>
-        <label class="input-label">Image</label>
-      </div>
-      <div class="error"
-           *ngIf="restaurantForm.controls.image?.invalid && (restaurantForm.controls.image?.dirty || restaurantForm.controls.image?.touched)">
-        <div *ngIf="restaurantForm.controls.image?.errors?.['required']">
-          L'image est requise.
-        </div>
-      </div>
-
-      <div class="input">
         <input type="text" class="input-field" formControlName="description" required/>
         <label class="input-label">Description</label>
       </div>
@@ -82,7 +71,7 @@
       </div>
 
       <div class="action">
-        <button class="action-button" [disabled]="restaurantForm.invalid">Inscription</button>
+        <button class="action-button" [disabled]="restaurantForm.invalid">Ajouter</button>
       </div>
     </form>
   </div>
