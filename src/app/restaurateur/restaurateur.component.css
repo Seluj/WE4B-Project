@@ -1,7 +1,13 @@
 .donnees{
-  text-align: center;
-  margin-top: 20px;
-  background-color: white;
+  font: inherit;
+  font-size: 1.25rem;
+  padding: 1em;
+  width: 100%;
+  font-weight: 500;
+  background-color: #18524e;
+  border-radius: 6px;
+  color: #FFF;
+  border: 0;
 }
 
 .p {
