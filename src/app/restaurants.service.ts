@@ -33,15 +33,15 @@ export class RestaurantsService implements OnInit {
   }
 
   public getRestaurantById(id: number) {
-    return this.http.get(`${this.baseUrl}/getRestaurantById.php`, { params: { id: id.toString() } }).pipe(
+    return this.http.get(`${this.baseUrl}/getRestaurantById.php`, { params: { id: id } }).pipe(
       map((res: any) => {
-        return res['data'];
+        return res;
       })
     );
   }
 
   public searchRestaurants(cheap: boolean, moderate: boolean, expensive: boolean, adresse: string, type1: boolean, type2: boolean, type3: boolean) {
-    return this.http.get(`${this.baseUrl}/searchRestaurants.php`, { params: { cheap: cheap.toString(), moderate: moderate.toString(), expensive: expensive.toString(), adresse: adresse, type1: type1.toString(), type2: type2.toString(), type3: type3.toString() } }).pipe(
+    return this.http.get(`${this.baseUrl}/searchRestaurants.php`, { params: { cheap: cheap, moderate: moderate, expensive: expensive, adresse: adresse, type1: type1, type2: type2, type3: type3 } }).pipe(
       map((res: any) => {
         return res['data'];
       })
@@ -64,4 +64,11 @@ export class RestaurantsService implements OnInit {
     );
   }
 
+  createRestaurant(data: Restaurant) {
+    return this.http.post(`${this.baseUrl}/createRestaurant.php`, { data: data }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }

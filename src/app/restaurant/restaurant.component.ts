@@ -39,6 +39,9 @@ export class RestaurantComponent implements OnInit {
       this.countLikes(id);
       this.getRestaurantById(id);
     });
+    this.countLikes(this.id);
+    this.getRestaurantById(this.id);
+    //console.log(this.popularity);
   }
 
   countLikes(id: number): void {
@@ -75,5 +78,8 @@ export class RestaurantComponent implements OnInit {
         this.error = 'Failed to get restaurant details.';
       }
     );
+  }
+  print() {
+    console.log(this.restaurant);
   }
 }

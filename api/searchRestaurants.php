@@ -3,28 +3,28 @@
 require 'databaseFunctions.php';
 $conn = connectDatabase();
 
-$cheap = isset($_GET['cheap']) ? $_GET['cheap'] : false;
-$moderate = isset($_GET['moderate']) ? $_GET['moderate'] : false;
-$expensive = isset($_GET['expensive']) ? $_GET['expensive'] : false;
-$adresse = isset($_GET['adresse']) ? $_GET['adresse'] : '';
-$type1 = isset($_GET['type1']) ? $_GET['type1'] : false;
-$type2 = isset($_GET['type2']) ? $_GET['type2'] : false;
-$type3 = isset($_GET['type3']) ? $_GET['type3'] : false;
+$cheap = $_GET['cheap'];
+$moderate = $_GET['moderate'];
+$expensive = $_GET['expensive'];
+$adresse = $_GET['adresse'];
+$type1 = $_GET['type1'];
+$type2 = $_GET['type2'];
+$type3 = $_GET['type3'];
 
 $restaurants = [];
-$sql = "SELECT * FROM restaurants WHERE";
+$sql = "SELECT * FROM restaurants";
 
 $conditions = [];
 
-if ($cheap) {
+if ($cheap == 'true') {
   $conditions[] = "prix = 1";
 }
 
-if ($moderate) {
+if ($moderate == 'true') {
   $conditions[] = "prix = 2";
 }
 
-if ($expensive) {
+if ($expensive == 'true') {
   $conditions[] = "prix = 3";
 }
 
@@ -32,19 +32,23 @@ if ($adresse !== '') {
   $conditions[] = "adresse LIKE '%{$adresse}%'";
 }
 
-if ($type1) {
+if ($type1 == 'true') {
   $conditions[] = "type = 1";
 }
 
-if ($type2) {
+if ($type2 == 'true') {
   $conditions[] = "type = 2";
 }
 
-if ($type3) {
+if ($type3 == 'true') {
   $conditions[] = "type = 3";
 }
 
-$sql .= implode(" AND ", $conditions);
+if (!empty($conditions)) {
+  $sql .= " WHERE ";
+}
+$sql .= implode(" OR ", $conditions);
+
 
 // Check if any results are found
 if ($result = mysqli_query($conn, $sql)) {

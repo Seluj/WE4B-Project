@@ -1,4 +1,4 @@
-.donnees{
+.donnees {
   font: inherit;
   font-size: 1.25rem;
   padding: 1em;
@@ -15,4 +15,10 @@
   line-height: 1.5;
 }
 
-
+h1 {
+  margin: 30px 20px 25px 20px;
+  color: #18524e;
+  border-top: #18524e;
+  border-top-style: double;
+  padding-top: 10px;
+}

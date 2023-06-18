@@ -17,19 +17,19 @@ export class RestaurateurComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.serviceRestaurant.getRestaurantByRestaurateur(this.utilisateur.id)
-        .subscribe((data: any) => {
-          this.restaurant = new Restaurant(
-            data['id'],
-            data['nom'],
-            data['adresse'],
-            data['image'],
-            data['description'],
-            data['prix'],
-            data['type'],
-            data['date_edit'],
-            this.utilisateur.id,
-          );
-        });
-    }
+    this.serviceRestaurant.getRestaurantByRestaurateur(this.utilisateur.id)
+      .subscribe((data: any) => {
+        this.restaurant = new Restaurant(
+          data['id'],
+          data['nom'],
+          data['adresse'],
+          data['image'],
+          data['description'],
+          data['type'],
+          data['prix'],
+          data['date_edit'],
+          this.utilisateur.id,
+        );
+      });
+  }
 }
