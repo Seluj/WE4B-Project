@@ -31,3 +31,7 @@ h1 {
 .no-restaurant p {
   margin-bottom: 30px;
 }
+
+.restaurant {
+  padding: 0 31%;
+}
