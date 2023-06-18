@@ -1,15 +1,16 @@
 <div class="carte">
-  <button [routerLink]="['restaurant', restaurant.id]">
-    <img src="../../assets/{{ restaurant.image }}" alt="" class="carte-image">
-  </button>
-  <div class="carte-info">
-    <a [routerLink]="['restaurant', restaurant.id]"><h3 class="nom-hover">{{ restaurant.nom }}</h3></a>
+  <a [routerLink]="['/restaurant', restaurant.id]">
+    <div class="card-image">
+      <img src="../../assets/{{ restaurant.image }}" alt="" class="card-img-top">
+    </div>
+  </a>
+  <div class="card-body">
+    <a [routerLink]="['/restaurant', restaurant.id]"><h3 class="nom-hover card-title">{{ restaurant.nom }}</h3></a>
     <h5>
       <button (click)="onLike()" class="{{ class }}">
         <i class="fa-solid fa-star"></i> {{ restaurant.popularite }}
       </button>
     </h5>
-    <br>
-    <h5>{{ restaurant.adresse }}</h5>
+    <h5 class="card-text">{{ restaurant.adresse }}</h5> <br>
   </div>
 </div>
