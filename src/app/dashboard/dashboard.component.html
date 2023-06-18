@@ -18,8 +18,7 @@
 
     <div class="compte">
 
-      <form class="card-form" [formGroup]="inscription.inscriptionForm" (ngSubmit)="inscription.onInscriptionForm()">
-        <!-- Gestion du nom -->
+      &lt;!&ndash;<form class="card-form" [formGroup]="inscription.inscriptionForm" (ngSubmit)="inscription.onInscriptionForm()">
         <div class="input">
           <input type="text" class="input-field" formControlName="nom" required/>
           <label class="input-label">Nom</label>
@@ -48,7 +47,6 @@
           </div>
         </div>
 
-        <!-- Gestion de l'email -->
         <div class="input">
           <input type="text" class="input-field" formControlName="email" required/>
           <label class="input-label">Email</label>
@@ -68,7 +66,6 @@
           </ng-template>
         </div>
 
-        <!-- Gestion du mot de passe -->
         <div class="input">
           <input type="password" class="input-field" formControlName="mdp" required/>
           <label class="input-label">Mot de passe</label>
@@ -96,7 +93,6 @@
           </div>
         </div>
 
-        <!-- Gestion de la confirmation du mot de passe -->
         <div class="mdpConfirm">
           <input type="password" class="input-field" formControlName="mdp2" required/>
           <label class="input-label">Confirmation</label>
@@ -119,7 +115,7 @@
 
 
 
-    <ng-template *ngIf="restaurateur">
+    <ng-template *ngIf="restaurateurTest">
 
       &lt;!&ndash; Si le restaurateur a déjà saisi un restaurant, on lui propose de modifier ses données &ndash;&gt;
       <ng-container *ngIf="restaurant; else creer_restaurant">
