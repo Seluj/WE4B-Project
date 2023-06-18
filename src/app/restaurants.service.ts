@@ -38,5 +38,13 @@ export class RestaurantsService implements OnInit {
     );
   }
 
+  public searchRestaurants(cheap: boolean, moderate: boolean, expensive: boolean, adresse: Text, type1: boolean, type2: boolean, type3: boolean) {
+    return this.http.get(`${this.baseUrl}/searchRestaurants.php`, { params: { cheap: cheap.toString(), moderate: moderate.toString(), expensive: expensive.toString(), adresse: adresse.toString(), type1: type1.toString(), type2: type2.toString(), type3: type3.toString() } }).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
+
 
 }
