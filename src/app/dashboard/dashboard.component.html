@@ -1,7 +1,7 @@
 <div class="dashboard">
 
   <!-- Div contenant les données de l'utilisateur : affiche son compte, et son restaurant dans le cas d'un restaurateur -->
-  <div class="affichage_modification affichage">
+  <div class="affichage">
 
     <div *ngIf="restaurateurTest; else elseBlock">
       <app-restaurateur [utilisateur]="utilisateur"></app-restaurateur>
