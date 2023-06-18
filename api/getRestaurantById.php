@@ -6,15 +6,16 @@ $conn = connectDatabase();
 $id = ($_GET['id'] !== null && (int)$_GET['id'] > 0) ? mysqli_real_escape_string($conn, (int)$_GET['id']) : false;
 
 if (!$id) {
-  return http_response_code(400);
+  http_response_code(400);
+  exit(); // Exit the script to prevent further execution
 }
 
-$sql = "SELECT `nom`, `adresse`, `image`, `description`, `prix`, `date_edit` FROM `restaurants` WHERE `id` = '{$id}'";
+$sql = "SELECT `id`, `nom`, `adresse`, `image`, `description`, `prix`, `date_edit` FROM `restaurants` WHERE `id` = '{$id}'";
+$result = mysqli_query($conn, $sql);
 
-if(mysqli_query($conn, $sql)) {
-  $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+if ($result && mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
   echo json_encode(['data' => $row]);
 } else {
   http_response_code(404);
 }
-
