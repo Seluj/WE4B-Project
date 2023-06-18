@@ -46,6 +46,7 @@ export class RestaurantComponent implements OnInit {
             description: data.description,
             prix: data.prix,
             user_id: data.user_id,
+            popularite: this.popularity,
             date_edit: data.date_edit
           };
         }
