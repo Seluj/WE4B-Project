@@ -26,6 +26,7 @@ export class RestaurateurComponent implements OnInit {
             data['image'],
             data['description'],
             data['prix'],
+            data['type'],
             data['date_edit'],
             this.utilisateur.id,
           );

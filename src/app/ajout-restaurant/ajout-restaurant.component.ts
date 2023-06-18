@@ -33,14 +33,14 @@ export class AjoutRestaurantComponent {
       <string>this.restaurantForm.value.adresse,
       <string>this.restaurantForm.value.image,
       <string>this.restaurantForm.value.description,
-      parseInt(<string>this.restaurantForm.value.type),
       parseInt(<string>this.restaurantForm.value.prix),
+      parseInt(<string>this.restaurantForm.value.type),
       this.utilisateur.id,
       0,
-      new Date().toString()
+      new Date().toString(),
     );
 
-    this.restaurantService.createRestaurant(this.restaurant).subscribe(
+    this.restaurantService.addRestaurants(this.restaurant).subscribe(
       (data: any) => {
         console.log(data);
         this.restaurant = data;

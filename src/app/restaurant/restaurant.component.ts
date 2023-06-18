@@ -17,6 +17,7 @@ export class RestaurantComponent implements OnInit {
     description: '',
     type: 0,
     prix: 0,
+    type: 0,
     user_id: 0,
     date_edit: '',
     popularite: 0,
@@ -62,6 +63,7 @@ export class RestaurantComponent implements OnInit {
             description: data.description,
             type: data.type,
             prix: data.prix,
+            type: data.type,
             user_id: data.user_id,
             popularite: this.popularity,
             date_edit: data.date_edit
