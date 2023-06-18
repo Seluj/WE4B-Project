@@ -3,23 +3,17 @@
   <!-- Div contenant les données de l'utilisateur : affiche son compte, et son restaurant dans le cas d'un restaurateur -->
   <div class="affichage_modification affichage">
 
-    <h1>Mon compte</h1>
-
-    <ng-container *ngIf="restaurateur; else afficherUtilisateur">
-      <app-restaurateur [restaurateur]="restaurateur"></app-restaurateur>
-      <h1>Mon restaurant</h1>
-      <div class="restaurant">
-        <app-carte [nom]="nom" [adresse]="adresse" [image]="image"></app-carte>
-      </div>
-
-    </ng-container>
-    <ng-template #afficherUtilisateur>
+    <div *ngIf="restaurateurTest; else elseBlock">
+      <app-restaurateur [utilisateur]="utilisateur"></app-restaurateur>
+    </div>
+    <ng-template #elseBlock>
       <app-utilisateur [utilisateur]="utilisateur"></app-utilisateur>
     </ng-template>
 
   </div>
+<!--
 
-  <!-- Div permettant à l'utilisateur de modifier son compte, et son restaurant s'il s'agit d'un restaurateur -->
+  &lt;!&ndash; Div permettant à l'utilisateur de modifier son compte, et son restaurant s'il s'agit d'un restaurateur &ndash;&gt;
   <div class="affichage_modification">
 
     <div class="compte">
@@ -127,7 +121,7 @@
 
     <ng-template *ngIf="restaurateur">
 
-      <!-- Si le restaurateur a déjà saisi un restaurant, on lui propose de modifier ses données -->
+      &lt;!&ndash; Si le restaurateur a déjà saisi un restaurant, on lui propose de modifier ses données &ndash;&gt;
       <ng-container *ngIf="restaurant; else creer_restaurant">
         <div class="restaurant">
 
@@ -143,7 +137,7 @@
               <label class="input-label">Adresse : </label>
             </div>
 
-            <!-- image -->
+            &lt;!&ndash; image &ndash;&gt;
 
             <div class="input">
               <input type="text" class="input-field" value="{{restaurant.description}}" required/>
@@ -160,12 +154,13 @@
 
       </ng-container>
 
-      <!-- Si le restaurateur n'a pas de restaurant, on lui propose d'en saisir un -->
+      &lt;!&ndash; Si le restaurateur n'a pas de restaurant, on lui propose d'en saisir un &ndash;&gt;
       <ng-template #creer_restaurant>
-        <!-- <app-ajout-restaurant [restaurateur]="restaurateur"></app-ajout-restaurant> -->
+        &lt;!&ndash; <app-ajout-restaurant [restaurateur]="restaurateur"></app-ajout-restaurant> &ndash;&gt;
       </ng-template>
     </ng-template>
 
   </div>
+-->
 
 </div>
