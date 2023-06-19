@@ -32,22 +32,39 @@ if ($adresse !== '') {
   $conditions[] = "adresse LIKE '%{$adresse}%'";
 }
 
-if ($type1 == 'true') {
-  $conditions[] = "type = 1";
+$typeConditions = [];
+if ($type1 == 'true' || $type2 == 'true' || $type3 == 'true') {
+  $orConditions = [];
+  if ($type1 == 'true') {
+    $orConditions[] = "type = 1";
+  }
+
+  if ($type2 == 'true') {
+    $orConditions[] = "type = 2";
+  }
+
+  if ($type3 == 'true') {
+    $orConditions[] = "type = 3";
+  }
+
+  $typeConditions[] = "(" . implode(" OR ", $orConditions) . ")";
 }
 
-if ($type2 == 'true') {
-  $conditions[] = "type = 2";
-}
-
-if ($type3 == 'true') {
-  $conditions[] = "type = 3";
-}
-
-if (!empty($conditions)) {
+if (!empty($conditions) || !empty($typeConditions)) {
   $sql .= " WHERE ";
+
+  if (!empty($conditions)) {
+    $sql .= implode(" AND ", $conditions);
+  }
+
+  if (!empty($conditions) && !empty($typeConditions)) {
+    $sql .= " AND ";
+  }
+
+  if (!empty($typeConditions)) {
+    $sql .= implode(" AND ", $typeConditions);
+  }
 }
-$sql .= implode(" OR ", $conditions);
 
 
 // Check if any results are found
